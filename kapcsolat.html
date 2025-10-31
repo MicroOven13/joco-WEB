@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="hu">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Kapcsolat – Fehér József</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<header>
+			<div class="container nav">
+				<a class="brand" href="index.html">Fehér József</a>
+				<nav class="menu">
+					<a href="index.html">Főoldal</a>
+					<a href="rolam.html">Rólam</a>
+					<a href="gyik.html">GYIK</a>
+					<a class="active" href="kapcsolat.html">Kapcsolat</a>
+				</nav>
+				<span class="cta">Kapcsolat</span>
+			</div>
+		</header>
+
+		<section class="hero">
+			<div class="container pad">
+				<h1>Kapcsolat</h1>
+				<p>
+					Elérhetőség: <strong>feherj@grantis.hu</strong> •
+					<strong>+36 30 634 0195</strong>
+				</p>
+				<form
+					class="mt-16"
+					action="https://formspree.io/f/XXXXXXXXXXXXXXXX"
+					method="POST"
+				>
+					<div>
+						<label>Név*</label>
+						<input required name="name" placeholder="" />
+					</div>
+					<div>
+						<label>E-mail*</label>
+						<input required type="email" name="email" placeholder="" />
+					</div>
+					<div>
+						<label>Telefonszám*</label>
+						<input required name="phone" placeholder="" />
+					</div>
+					<div>
+						<label>Miért jelentkezik? Mit szeretne?</label>
+						<textarea name="message" rows="5" placeholder=""></textarea>
+					</div>
+					<div>
+						<label>Preferált kapcsolatfelvétel</label>
+						<select name="contact_pref">
+							<option>E-mail</option>
+							<option>Telefon</option>
+						</select>
+					</div>
+					<label class="consent">
+						<input type="checkbox" required name="gdpr" />
+						<span>
+							Elolvastam és elfogadom az
+							<a href="adatkezeles.html" target="_blank" rel="noopener"
+								>Adatkezelési tájékoztatót</a
+							>, és hozzájárulok, hogy a megadott személyes adataimat Fehér
+							József a kapcsolatfelvétel és időpont-egyeztetés céljából kezelje.
+						</span>
+					</label>
+
+					<button class="submit" type="submit">XXXXXXXXXXXXXXXX</button>
+				</form>
+				<p style="margin-top: 10px; font-size: 12px; color: #6b7280">
+					* Beküldés után XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+				</p>
+			</div>
+		</section>
+
+		<footer>
+			<div class="container">
+				<div style="font-size: 12px">
+					© <span id="yearK"></span> XXXXXXXXXXXXXXXXXX
+				</div>
+			</div>
+		</footer>
+		<script>
+			document.getElementById("yearK").textContent = new Date().getFullYear();
+		</script>
+	</body>
+</html>
