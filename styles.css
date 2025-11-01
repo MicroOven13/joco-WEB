@@ -376,8 +376,8 @@ footer { margin-top: auto; }
 .hero-img.banner .banner-img{
   width: 100%;
   height: 100%;
-  object-fit: cover;        
-  object-position: 70% center; 
+  object-fit: cover;
+  object-position: 55% 42%;
   display: block;
 }
 @media (max-width: 640px){
@@ -406,4 +406,34 @@ footer { margin-top: auto; }
 
 @media (max-width: 640px){
   .hero-img.square{ max-width: 320px; margin: 0 auto; }
+}
+label.consent a { text-decoration: underline; }
+label.consent a:hover { opacity: .85; }
+
+label.consent{
+  display: flex;
+  align-items: center;      
+  justify-content: flex-start;
+  gap: 12px;
+  max-width: 720px;
+  line-height: 1.4;
+  font-size: 14px;
+  color: #4b5563;
+  margin-top: 10px;
+}
+
+label.consent input[type="checkbox"]{
+  margin: 0;                
+  vertical-align: middle;
+  inline-size: 18px;       
+  block-size: 18px;
+}
+
+label.consent span{
+  flex: 1 1 auto;
+}
+
+
+@supports (accent-color: #F2B84B){
+  label.consent input[type="checkbox"]{ accent-color: #F2B84B; }
 }

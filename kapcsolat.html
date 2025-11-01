@@ -42,7 +42,21 @@
 					</div>
 					<div>
 						<label>Telefonszám*</label>
-						<input required name="phone" placeholder="" />
+						<div>
+							<input
+								id="phone"
+								name="phone"
+								type="tel"
+								inputmode="numeric"
+								autocomplete="tel"
+								required
+								maxlength="15"
+								pattern="^[0-9]{9,15}$"
+								title="Kérlek, csak számokat adj meg (9–15 számjegy, pl. 06301234567)."
+								placeholder=""
+								oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+							/>
+						</div>
 					</div>
 					<div>
 						<label>Miért jelentkezik? Mit szeretne?</label>
@@ -66,10 +80,10 @@
 						</span>
 					</label>
 
-					<button class="submit" type="submit">XXXXXXXXXXXXXXXX</button>
+					<button class="submit" type="submit">Küldés</button>
 				</form>
 				<p style="margin-top: 10px; font-size: 12px; color: #6b7280">
-					* Beküldés után XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+				 * Beküldés után 1-2 munkanapon belül felveszem veled a kapcsolatot.
 				</p>
 			</div>
 		</section>
@@ -83,6 +97,62 @@
 		</footer>
 		<script>
 			document.getElementById("yearK").textContent = new Date().getFullYear();
+			(function () {
+				const form = document.querySelector("form");
+				const gdpr = document.querySelector('input[name="gdpr"]');
+				const btn = document.getElementById("submit-btn");
+				const err = document.getElementById("gdpr-error");
+				const wrap = document.getElementById("gdpr-consent");
+				const phone = document.getElementById("phone");
+				if (phone) {
+					phone.addEventListener("paste", function (e) {
+						e.preventDefault();
+						const text = (e.clipboardData || window.clipboardData).getData(
+							"text"
+						);
+						const digits = text.replace(/\D/g, "").slice(0, 15);
+						const caretEnd = this.selectionStart ?? this.value.length;
+						const caretStart = this.selectionStart ?? this.value.length;
+						this.value = (
+							this.value.slice(0, caretStart) +
+							digits +
+							this.value.slice(caretEnd)
+						)
+							.replace(/\D/g, "")
+							.slice(0, 15);
+					});
+				}
+
+				function toggle() {
+					if (btn) btn.disabled = !gdpr.checked;
+					if (gdpr.checked) {
+						err.style.display = "none";
+						wrap.style.outline = "none";
+					}
+				}
+				gdpr.addEventListener("change", toggle);
+				toggle();
+
+				form.addEventListener("submit", function (e) {
+					if (!gdpr.checked) {
+						e.preventDefault();
+						err.style.display = "block";
+						wrap.style.outline = "2px solid #b91c1c";
+						wrap.style.outlineOffset = "4px";
+						gdpr.focus();
+						return;
+					}
+
+					const ok = /^\d{9,15}$/.test(phone.value);
+					if (!ok) {
+						e.preventDefault();
+						alert(
+							"Kérlek, csak számokat adj meg telefonszámként (9–15 számjegy, pl. 06301234567)."
+						);
+						phone.focus();
+					}
+				});
+			})();
 		</script>
 	</body>
 </html>
