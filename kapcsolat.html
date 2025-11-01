@@ -29,39 +29,41 @@
 				</p>
 				<form
 					class="mt-16"
-					action="https://formspree.io/f/XXXXXXXXXXXXXXXX"
+					action="https://formspree.io/f/xblpppoa"
 					method="POST"
 				>
 					<div>
 						<label>Név*</label>
 						<input required name="name" placeholder="" />
 					</div>
+
 					<div>
 						<label>E-mail*</label>
 						<input required type="email" name="email" placeholder="" />
 					</div>
+
 					<div>
 						<label>Telefonszám*</label>
-						<div>
-							<input
-								id="phone"
-								name="phone"
-								type="tel"
-								inputmode="numeric"
-								autocomplete="tel"
-								required
-								maxlength="15"
-								pattern="^[0-9]{9,15}$"
-								title="Kérlek, csak számokat adj meg (9–15 számjegy, pl. 06301234567)."
-								placeholder=""
-								oninput="this.value=this.value.replace(/[^0-9]/g,'');"
-							/>
-						</div>
+						<input
+							id="phone"
+							name="phone"
+							type="tel"
+							inputmode="numeric"
+							autocomplete="tel"
+							required
+							maxlength="15"
+							pattern="^[0-9]{9,15}$"
+							title="Kérlek, csak számokat adj meg (9–15 számjegy)."
+							oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+							placeholder=""
+						/>
 					</div>
+
 					<div>
 						<label>Miért jelentkezik? Mit szeretne?</label>
 						<textarea name="message" rows="5" placeholder=""></textarea>
 					</div>
+
 					<div>
 						<label>Preferált kapcsolatfelvétel</label>
 						<select name="contact_pref">
@@ -69,8 +71,14 @@
 							<option>Telefon</option>
 						</select>
 					</div>
-					<label class="consent">
-						<input type="checkbox" required name="gdpr" />
+
+					<label class="consent" id="gdpr-consent">
+						<input
+							type="checkbox"
+							required
+							name="gdpr"
+							aria-describedby="gdpr-error"
+						/>
 						<span>
 							Elolvastam és elfogadom az
 							<a href="adatkezeles.html" target="_blank" rel="noopener"
@@ -79,11 +87,33 @@
 							József a kapcsolatfelvétel és időpont-egyeztetés céljából kezelje.
 						</span>
 					</label>
+					<p
+						id="gdpr-error"
+						style="
+							display: none;
+							color: #b91c1c;
+							font-size: 13px;
+							margin: 6px 0 10px 0;
+						"
+					>
+						Kérlek, jelöld be a hozzájárulást a folytatáshoz.
+					</p>
 
-					<button class="submit" type="submit">Küldés</button>
+					<button class="submit" type="submit" id="submit-btn" disabled>
+						Beküldés
+					</button>
+
+					<input
+						type="hidden"
+						name="_subject"
+						value="Új érdeklődés – feherjozsef.hu"
+					/>
+					<input type="hidden" name="_redirect" value="/koszonjuk.html" />
+					<input type="text" name="_gotcha" style="display: none" />
 				</form>
+
 				<p style="margin-top: 10px; font-size: 12px; color: #6b7280">
-				 * Beküldés után 1-2 munkanapon belül felveszem veled a kapcsolatot.
+					* Beküldés után 1-2 munkanapon belül felveszem veled a kapcsolatot.
 				</p>
 			</div>
 		</section>
@@ -91,68 +121,54 @@
 		<footer>
 			<div class="container">
 				<div style="font-size: 12px">
-					© <span id="yearK"></span> XXXXXXXXXXXXXXXXXX
+					© <span id="yearR"></span> Fehér József •
+					<a href="adatkezeles.html">Adatkezelési tájékoztató</a> •
+					<a href="jogi-nyilatkozat.html">Jogi nyilatkozat</a>
 				</div>
 			</div>
 		</footer>
 		<script>
-			document.getElementById("yearK").textContent = new Date().getFullYear();
-			(function () {
-				const form = document.querySelector("form");
-				const gdpr = document.querySelector('input[name="gdpr"]');
-				const btn = document.getElementById("submit-btn");
-				const err = document.getElementById("gdpr-error");
-				const wrap = document.getElementById("gdpr-consent");
-				const phone = document.getElementById("phone");
-				if (phone) {
-					phone.addEventListener("paste", function (e) {
-						e.preventDefault();
-						const text = (e.clipboardData || window.clipboardData).getData(
-							"text"
-						);
-						const digits = text.replace(/\D/g, "").slice(0, 15);
-						const caretEnd = this.selectionStart ?? this.value.length;
-						const caretStart = this.selectionStart ?? this.value.length;
-						this.value = (
-							this.value.slice(0, caretStart) +
-							digits +
-							this.value.slice(caretEnd)
-						)
-							.replace(/\D/g, "")
-							.slice(0, 15);
-					});
-				}
+  const yearEl = document.getElementById("yearK") || document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-				function toggle() {
-					if (btn) btn.disabled = !gdpr.checked;
-					if (gdpr.checked) {
-						err.style.display = "none";
-						wrap.style.outline = "none";
-					}
-				}
-				gdpr.addEventListener("change", toggle);
-				toggle();
+  document.addEventListener('DOMContentLoaded', function(){
+    const form  = document.querySelector('form');
+    if (!form) return;
 
-				form.addEventListener("submit", function (e) {
-					if (!gdpr.checked) {
-						e.preventDefault();
-						err.style.display = "block";
-						wrap.style.outline = "2px solid #b91c1c";
-						wrap.style.outlineOffset = "4px";
-						gdpr.focus();
-						return;
-					}
+    const gdpr  = form.querySelector('input[name="gdpr"]');
+    const btn   = document.getElementById('submit-btn');
+    const err   = document.getElementById('gdpr-error');
+    const phone = document.getElementById('phone');
 
-					const ok = /^\d{9,15}$/.test(phone.value);
-					if (!ok) {
-						e.preventDefault();
-						alert(
-							"Kérlek, csak számokat adj meg telefonszámként (9–15 számjegy, pl. 06301234567)."
-						);
-						phone.focus();
-					}
-				});
-			})();
-		</script>
+    function toggleBtn(){ if (btn && gdpr) btn.disabled = !gdpr.checked; }
+    if (gdpr) gdpr.addEventListener('change', toggleBtn);
+    toggleBtn();
+
+    if (phone) {
+      phone.addEventListener('paste', function(e){
+        e.preventDefault();
+        const digits = (e.clipboardData.getData('text') || '').replace(/\D/g,'').slice(0,15);
+        document.execCommand('insertText', false, digits);
+      });
+    }
+
+    form.addEventListener('submit', function(e){
+
+      if (gdpr && !gdpr.checked) {
+        e.preventDefault();
+        if (err) err.style.display = 'block';
+        gdpr.focus();
+        return;
+      }
+      if (phone && !/^\d{9,15}$/.test(phone.value)) {
+        e.preventDefault();
+        alert('Kérlek, csak számokat adj meg telefonszámként (9–15 számjegy, pl. 06301234567).');
+        phone.focus();
+        return;
+      }
+    });
+  });
+</script>
+
 	</body>
 </html>
