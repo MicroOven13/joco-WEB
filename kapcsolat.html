@@ -8,17 +8,24 @@
 	</head>
 	<body>
 		<header>
-			<div class="container nav">
-				<a class="brand" href="index.html">Fehér József</a>
-				<nav class="menu">
-					<a href="index.html">Főoldal</a>
-					<a href="rolam.html">Rólam</a>
-					<a href="gyik.html">GYIK</a>
-					<a class="active" href="kapcsolat.html">Kapcsolat</a>
-				</nav>
-				<span class="cta">Kapcsolat</span>
-			</div>
-		</header>
+  <div class="container nav">
+    <a class="brand" href="index.html">Fehér József</a>
+
+    <!-- HAMBURGER GOMB -->
+    <button class="menu-toggle" aria-expanded="false" aria-controls="mainmenu" aria-label="Menü">☰</button>
+
+    <!-- MENÜ (ID KELL!) -->
+    <nav class="menu" id="mainmenu">
+      <a href="index.html" class="active">Főoldal</a>
+      <a href="rolam.html">Rólam</a>
+      <a href="gyik.html">GYIK</a>
+      <a href="kapcsolat.html">Kapcsolat</a>
+    </nav>
+
+    <a class="cta" href="kapcsolat.html">Időpontkérés</a>
+  </div>
+</header>
+
 
 		<section class="hero">
 			<div class="container pad">
@@ -128,44 +135,79 @@
 			</div>
 		</footer>
 		<script>
-  const yearEl = document.getElementById("yearK") || document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', function(){
+  const form  = document.querySelector('form');
+  if (!form) return;
 
-  document.addEventListener('DOMContentLoaded', function(){
-    const form  = document.querySelector('form');
-    if (!form) return;
+  const email = form.querySelector('input[name="email"]');
+  const phone = document.getElementById('phone');
+  const gdpr  = form.querySelector('input[name="gdpr"]');
+  const btn   = document.getElementById('submit-btn');
 
-    const gdpr  = form.querySelector('input[name="gdpr"]');
-    const btn   = document.getElementById('submit-btn');
-    const err   = document.getElementById('gdpr-error');
-    const phone = document.getElementById('phone');
+  const emailErr = document.getElementById('email-error');
+  const phoneErr = document.getElementById('phone-error');
+  const gdprErr  = document.getElementById('gdpr-error');
+  const gdprWrap = document.getElementById('gdpr-consent');
 
-    function toggleBtn(){ if (btn && gdpr) btn.disabled = !gdpr.checked; }
-    if (gdpr) gdpr.addEventListener('change', toggleBtn);
-    toggleBtn();
+  function show(el){ if(el){ el.style.display='block'; } }
+  function hide(el){ if(el){ el.style.display='none'; } }
 
-    if (phone) {
-      phone.addEventListener('paste', function(e){
-        e.preventDefault();
-        const digits = (e.clipboardData.getData('text') || '').replace(/\D/g,'').slice(0,15);
-        document.execCommand('insertText', false, digits);
-      });
+  function toggleBtn(){ if (btn && gdpr) btn.disabled = !gdpr.checked; }
+  if (gdpr) gdpr.addEventListener('change', ()=>{ toggleBtn(); hide(gdprErr); gdprWrap.style.outline='none'; });
+  toggleBtn();
+
+  if (email) email.addEventListener('input', ()=> hide(emailErr));
+  if (phone){
+    phone.addEventListener('input', ()=>{
+      phone.value = phone.value.replace(/[^0-9]/g,'').slice(0,15);
+      hide(phoneErr);
+    });
+    phone.addEventListener('paste', (e)=>{
+      e.preventDefault();
+      const digits=(e.clipboardData.getData('text')||'').replace(/\D/g,'').slice(0,15);
+      document.execCommand('insertText', false, digits);
+    });
+  }
+
+  form.addEventListener('submit', function(e){
+   
+    if (gdpr && !gdpr.checked){
+      e.preventDefault();
+      show(gdprErr);
+      gdprWrap.style.outline = '2px solid #b91c1c';
+      gdprWrap.style.outlineOffset = '4px';
+      gdpr.scrollIntoView({behavior:'smooth', block:'center'});
+      gdpr.focus();
+      return;
     }
+    
+    const emailOK = email && email.validity.valid; 
+    if (!emailOK){
+      e.preventDefault();
+      show(emailErr);
+      email.scrollIntoView({behavior:'smooth', block:'center'});
+      email.focus();
+      return;
+    }
+    // Telefon
+    const phoneOK = phone && /^\d{9,15}$/.test(phone.value);
+    if (!phoneOK){
+      e.preventDefault();
+      show(phoneErr);
+      phone.scrollIntoView({behavior:'smooth', block:'center'});
+      phone.focus();
+      return;
+    }
+  });
+});
+  document.addEventListener('DOMContentLoaded', function(){
+    const btn  = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('mainmenu');
+    if (!btn || !menu) return;
 
-    form.addEventListener('submit', function(e){
-
-      if (gdpr && !gdpr.checked) {
-        e.preventDefault();
-        if (err) err.style.display = 'block';
-        gdpr.focus();
-        return;
-      }
-      if (phone && !/^\d{9,15}$/.test(phone.value)) {
-        e.preventDefault();
-        alert('Kérlek, csak számokat adj meg telefonszámként (9–15 számjegy, pl. 06301234567).');
-        phone.focus();
-        return;
-      }
+    btn.addEventListener('click', function(){
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   });
 </script>

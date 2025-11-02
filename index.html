@@ -8,17 +8,25 @@
   </head>
   <body>
     <header>
-      <div class="container nav">
-        <a class="brand" href="index.html">Fehér József</a>
-        <nav class="menu">
-          <a class="active" href="index.html">Főoldal</a>
-          <a href="rolam.html">Rólam</a>
-          <a href="gyik.html">GYIK</a>
-          <a href="kapcsolat.html">Kapcsolat</a>
-        </nav>
-        <a class="cta" href="kapcsolat.html">Időpontkérés</a>
-      </div>
-    </header>
+  <div class="container nav">
+    <a class="brand" href="index.html">Fehér József</a>
+
+    <!-- HAMBURGER GOMB -->
+    <button class="menu-toggle" aria-expanded="false" aria-controls="mainmenu" aria-label="Menü">☰</button>
+
+    <!-- MENÜ (ID KELL!) -->
+    <nav class="menu" id="mainmenu">
+      <a href="index.html" class="active">Főoldal</a>
+      <a href="rolam.html">Rólam</a>
+      <a href="gyik.html">GYIK</a>
+      <a href="kapcsolat.html">Kapcsolat</a>
+    </nav>
+
+    <a class="cta" href="kapcsolat.html">Időpontkérés</a>
+  </div>
+</header>
+
+
 
     <section id="hero" class="hero">
       <div class="container pad hero-grid">
@@ -159,6 +167,26 @@
     </footer>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+      
+  (function(){
+    const btn = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('mainmenu');
+    if(!btn || !menu) return;
+    btn.addEventListener('click', ()=>{
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+  document.addEventListener('DOMContentLoaded', function(){
+    const btn  = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('mainmenu');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', function(){
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
     </script>
   </body>
 </html>
