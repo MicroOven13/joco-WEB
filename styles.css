@@ -587,3 +587,46 @@ header .container.nav{
   .menu{ display:none !important; }
   .menu.open{ display:flex !important; }
 }
+/* ==== Alap: desktop ==== */
+header .container.nav{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.menu{ display:flex; gap:18px; }
+.menu-toggle{ display:none; }
+
+/* ==== Desktop kényszerítése ==== */
+@media (min-width: 768px){
+  .menu-toggle{ display:none !important; }
+  .menu{ display:flex !important; position:static !important; background:transparent !important; }
+}
+
+/* ==== Mobil: 767px és alatta ==== */
+@media (max-width: 767px){
+  /* hamburger látszik */
+  .menu-toggle{
+    display:inline-flex !important; align-items:center; justify-content:center;
+    width:44px; height:44px; border:1px solid #223045; border-radius:10px;
+    background:#0f1b2a; color:#fff; cursor:pointer;
+  }
+
+  /* MENÜ a header ALATT, a fehér tartalmi részen */
+  .menu{
+    display:none !important;               /* alapból rejtve */
+    position:static !important;            /* NEM absolute -> a header alatt fog megjelenni */
+    margin:10px 0 0;                       /* kis távolság a fejléctől */
+    padding:8px;
+    background:#fff;                       /* fehér doboz */
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,.06);
+    flex-direction:column; gap:6px;
+  }
+  .menu a{
+    color:#0f172a !important;
+    padding:10px 12px; border-radius:8px; text-decoration:none;
+  }
+  .menu a:hover{ background:#f3f4f6; }
+
+  /* Nyitás: blokkban jelenjen meg (nem flex sor) */
+  .menu.open{ display:block !important; }
+}
