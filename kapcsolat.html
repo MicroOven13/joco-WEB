@@ -8,28 +8,34 @@
 	</head>
 	<body>
 		<header>
-  <div class="container nav">
-    <a class="brand" href="index.html">Fehér József</a>
+			<div class="container nav">
+				<a class="brand" href="index.html">Fehér József</a>
 
-    <!-- HAMBURGER GOMB -->
-    <button id="menu-toggle" type="button"
-        class="menu-toggle"
-        aria-expanded="false" aria-controls="mainmenu" aria-label="Menü">☰</button>
+				<!-- HAMBURGER GOMB -->
+				<button
+					id="menu-toggle"
+					type="button"
+					class="menu-toggle"
+					aria-expanded="false"
+					aria-controls="mainmenu"
+					aria-label="Menü"
+				>
+					☰
+				</button>
 
+				<!-- MENÜ (ID KELL!) -->
+				<nav class="menu" id="mainmenu">
+					<a href="index.html">Főoldal</a>
+					<a href="rolam.html">Rólam</a>
+					<a href="gyik.html">GYIK</a>
+					<a href="kapcsolat.html" class="active" aria-current="page"
+						>Kapcsolat</a
+					>
+				</nav>
 
-    <!-- MENÜ (ID KELL!) -->
-    <nav class="menu" id="mainmenu">
-  <a href="index.html">Főoldal</a>
-  <a href="rolam.html">Rólam</a>
-  <a href="gyik.html">GYIK</a>
-  <a href="kapcsolat.html" class="active" aria-current="page">Kapcsolat</a>
-</nav>
-
-
-    <a class="cta" href="kapcsolat.html">Időpontkérés</a>
-  </div>
-</header>
-
+				<a class="cta" href="kapcsolat.html">Időpontkérés</a>
+			</div>
+		</header>
 
 		<section class="hero">
 			<div class="container pad">
@@ -68,6 +74,27 @@
 							oninput="this.value=this.value.replace(/[^0-9]/g,'');"
 							placeholder=""
 						/>
+					</div>
+					<div>
+						<label>Irányítószám*</label>
+						<input
+							id="zip"
+							name="zip"
+							required
+							inputmode="numeric"
+							maxlength="4"
+							pattern="^\d{4}$"
+							title="Kérlek, 4 számjegyet adj meg (pl. 1051)."
+							placeholder=""
+							oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,4);"
+						/>
+						<small
+							id="zip-error"
+							class="field-error"
+							style="display: none; color: #b91c1c"
+						>
+							Kérlek, 4 számjegyet adj meg (pl. 1051).
+						</small>
 					</div>
 
 					<div>
@@ -139,153 +166,183 @@
 			</div>
 		</footer>
 		<script>
-document.addEventListener('DOMContentLoaded', function(){
-  const form  = document.querySelector('form');
-  if (!form) return;
+			document.addEventListener("DOMContentLoaded", function () {
+				const form = document.querySelector("form");
+				if (!form) return;
 
-  const email = form.querySelector('input[name="email"]');
-  const phone = document.getElementById('phone');
-  const gdpr  = form.querySelector('input[name="gdpr"]');
-  const btn   = document.getElementById('submit-btn');
+				const email = form.querySelector('input[name="email"]');
+				const phone = document.getElementById("phone");
+				const gdpr = form.querySelector('input[name="gdpr"]');
+				const btn = document.getElementById("submit-btn");
 
-  const emailErr = document.getElementById('email-error');
-  const phoneErr = document.getElementById('phone-error');
-  const gdprErr  = document.getElementById('gdpr-error');
-  const gdprWrap = document.getElementById('gdpr-consent');
+				const emailErr = document.getElementById("email-error");
+				const phoneErr = document.getElementById("phone-error");
+				const gdprErr = document.getElementById("gdpr-error");
+				const gdprWrap = document.getElementById("gdpr-consent");
 
-  function show(el){ if(el){ el.style.display='block'; } }
-  function hide(el){ if(el){ el.style.display='none'; } }
+				function show(el) {
+					if (el) {
+						el.style.display = "block";
+					}
+				}
+				function hide(el) {
+					if (el) {
+						el.style.display = "none";
+					}
+				}
 
-  function toggleBtn(){ if (btn && gdpr) btn.disabled = !gdpr.checked; }
-  if (gdpr) gdpr.addEventListener('change', ()=>{ toggleBtn(); hide(gdprErr); gdprWrap.style.outline='none'; });
-  toggleBtn();
+				function toggleBtn() {
+					if (btn && gdpr) btn.disabled = !gdpr.checked;
+				}
+				if (gdpr)
+					gdpr.addEventListener("change", () => {
+						toggleBtn();
+						hide(gdprErr);
+						gdprWrap.style.outline = "none";
+					});
+				toggleBtn();
 
-  if (email) email.addEventListener('input', ()=> hide(emailErr));
-  if (phone){
-    phone.addEventListener('input', ()=>{
-      phone.value = phone.value.replace(/[^0-9]/g,'').slice(0,15);
-      hide(phoneErr);
-    });
-    phone.addEventListener('paste', (e)=>{
-      e.preventDefault();
-      const digits=(e.clipboardData.getData('text')||'').replace(/\D/g,'').slice(0,15);
-      document.execCommand('insertText', false, digits);
-    });
-  }
+				if (email) email.addEventListener("input", () => hide(emailErr));
+				if (phone) {
+					phone.addEventListener("input", () => {
+						phone.value = phone.value.replace(/[^0-9]/g, "").slice(0, 15);
+						hide(phoneErr);
+					});
+					phone.addEventListener("paste", (e) => {
+						e.preventDefault();
+						const digits = (e.clipboardData.getData("text") || "")
+							.replace(/\D/g, "")
+							.slice(0, 15);
+						document.execCommand("insertText", false, digits);
+					});
+				}
 
-  form.addEventListener('submit', function(e){
-   
-    if (gdpr && !gdpr.checked){
-      e.preventDefault();
-      show(gdprErr);
-      gdprWrap.style.outline = '2px solid #b91c1c';
-      gdprWrap.style.outlineOffset = '4px';
-      gdpr.scrollIntoView({behavior:'smooth', block:'center'});
-      gdpr.focus();
-      return;
-    }
-    
-    const emailOK = email && email.validity.valid; 
-    if (!emailOK){
-      e.preventDefault();
-      show(emailErr);
-      email.scrollIntoView({behavior:'smooth', block:'center'});
-      email.focus();
-      return;
-    }
-    // Telefon
-    const phoneOK = phone && /^\d{9,15}$/.test(phone.value);
-    if (!phoneOK){
-      e.preventDefault();
-      show(phoneErr);
-      phone.scrollIntoView({behavior:'smooth', block:'center'});
-      phone.focus();
-      return;
-    }
-  });
-});
-  document.addEventListener('DOMContentLoaded', function(){
-    const btn  = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('mainmenu');
-    if (!btn || !menu) return;
+				form.addEventListener("submit", function (e) {
+					if (gdpr && !gdpr.checked) {
+						e.preventDefault();
+						show(gdprErr);
+						gdprWrap.style.outline = "2px solid #b91c1c";
+						gdprWrap.style.outlineOffset = "4px";
+						gdpr.scrollIntoView({ behavior: "smooth", block: "center" });
+						gdpr.focus();
+						return;
+					}
 
-    btn.addEventListener('click', function(){
-      const open = menu.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  document.addEventListener('DOMContentLoaded', function(){
-    const btn  = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('mainmenu');
-    if (!btn || !menu) return;
-    btn.addEventListener('click', function(){
-      const open = menu.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-(function () {
-  var btn  = document.getElementById('menu-toggle');
-  var menu = document.getElementById('mainmenu');
-  if (!btn || !menu) return;
+					const emailOK = email && email.validity.valid;
+					if (!emailOK) {
+						e.preventDefault();
+						show(emailErr);
+						email.scrollIntoView({ behavior: "smooth", block: "center" });
+						email.focus();
+						return;
+					}
+					// Telefon
+					const phoneOK = phone && /^\d{9,15}$/.test(phone.value);
+					if (!phoneOK) {
+						e.preventDefault();
+						show(phoneErr);
+						phone.scrollIntoView({ behavior: "smooth", block: "center" });
+						phone.focus();
+						return;
+					}
+				});
+			});
+			document.addEventListener("DOMContentLoaded", function () {
+				const btn = document.querySelector(".menu-toggle");
+				const menu = document.getElementById("mainmenu");
+				if (!btn || !menu) return;
 
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();                       // ne buborékoljon tovább
-    var open = menu.classList.toggle('open');  // nyit/zár
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
+				btn.addEventListener("click", function () {
+					const open = menu.classList.toggle("open");
+					btn.setAttribute("aria-expanded", open ? "true" : "false");
+					document.addEventListener("DOMContentLoaded", function () {
+						const btn = document.querySelector(".menu-toggle");
+						const menu = document.getElementById("mainmenu");
+						if (!btn || !menu) return;
+						btn.addEventListener("click", function () {
+							const open = menu.classList.toggle("open");
+							btn.setAttribute("aria-expanded", open ? "true" : "false");
+							(function () {
+								var btn = document.getElementById("menu-toggle");
+								var menu = document.getElementById("mainmenu");
+								if (!btn || !menu) return;
 
-  // Menün kívül kattintásra zárjuk
-  document.addEventListener('click', function (e) {
-    if (menu.classList.contains('open') &&
-        !menu.contains(e.target) && e.target !== btn) {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-document.addEventListener('DOMContentLoaded', function () {
-  const btn  = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mainmenu');
-  if (!btn || !menu) return;
+								btn.addEventListener("click", function (e) {
+									e.stopPropagation(); // ne buborékoljon tovább
+									var open = menu.classList.toggle("open"); // nyit/zár
+									btn.setAttribute("aria-expanded", open ? "true" : "false");
+								});
 
-  btn.addEventListener('click', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const open = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
+								// Menün kívül kattintásra zárjuk
+								document.addEventListener("click", function (e) {
+									if (
+										menu.classList.contains("open") &&
+										!menu.contains(e.target) &&
+										e.target !== btn
+									) {
+										menu.classList.remove("open");
+										btn.setAttribute("aria-expanded", "false");
+										document.addEventListener("DOMContentLoaded", function () {
+											const btn = document.getElementById("menu-toggle");
+											const menu = document.getElementById("mainmenu");
+											if (!btn || !menu) return;
 
-  document.addEventListener('click', function (e) {
-    if (menu.classList.contains('open') &&
-        !menu.contains(e.target) && e.target !== btn) {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-document.addEventListener('DOMContentLoaded', function(){
-  const btn  = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mainmenu');
-  if (!btn || !menu) return;
-  btn.addEventListener('click', function(e){
-    e.preventDefault(); e.stopPropagation();
-    const open = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  document.addEventListener('click', function(e){
-    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== btn) {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded','false');
-    }
-  });
-});
+											btn.addEventListener("click", function (e) {
+												e.preventDefault();
+												e.stopPropagation();
+												const open = menu.classList.toggle("open");
+												btn.setAttribute(
+													"aria-expanded",
+													open ? "true" : "false"
+												);
+											});
 
-
-    }
-  });
-});
-
-
-    }
-  });
-})();
-
-
-    });
-  });
-    });
-  });
-</script>
-
+											document.addEventListener("click", function (e) {
+												if (
+													menu.classList.contains("open") &&
+													!menu.contains(e.target) &&
+													e.target !== btn
+												) {
+													menu.classList.remove("open");
+													btn.setAttribute("aria-expanded", "false");
+													document.addEventListener(
+														"DOMContentLoaded",
+														function () {
+															const btn =
+																document.getElementById("menu-toggle");
+															const menu = document.getElementById("mainmenu");
+															if (!btn || !menu) return;
+															btn.addEventListener("click", function (e) {
+																e.preventDefault();
+																e.stopPropagation();
+																const open = menu.classList.toggle("open");
+																btn.setAttribute(
+																	"aria-expanded",
+																	open ? "true" : "false"
+																);
+															});
+															document.addEventListener("click", function (e) {
+																if (
+																	menu.classList.contains("open") &&
+																	!menu.contains(e.target) &&
+																	e.target !== btn
+																) {
+																	menu.classList.remove("open");
+																	btn.setAttribute("aria-expanded", "false");
+																}
+															});
+														}
+													);
+												}
+											});
+										});
+									}
+								});
+							})();
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>
