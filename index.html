@@ -18,11 +18,12 @@
 
         <!-- Főmenü -->
         <nav class="menu" id="mainmenu">
-          <a href="index.html" class="active">Főoldal</a>
-          <a href="rolam.html">Rólam</a>
-          <a href="gyik.html">GYIK</a>
-          <a href="kapcsolat.html">Kapcsolat</a>
-        </nav>
+  <a href="index.html" class="active" aria-current="page">Főoldal</a>
+  <a href="rolam.html">Rólam</a>
+  <a href="gyik.html">GYIK</a>
+  <a href="kapcsolat.html">Kapcsolat</a>
+</nav>
+
 
         <a class="cta" href="kapcsolat.html">Időpontkérés</a>
       </div>
@@ -174,7 +175,21 @@
               !menu.contains(e.target) && e.target !== btn) {
             menu.classList.remove('open');
             btn.setAttribute('aria-expanded', 'false');
-          }
+          } document.addEventListener('DOMContentLoaded', function () {
+    const btn  = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mainmenu');
+    if (!btn || !menu) return;
+
+    // Menü zárása, ha egy menüpontot választanak
+    menu.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=>{
+        if (menu.classList.contains('open')) {
+          menu.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+        }
+      });
+    });
+  });
         });
       });
     </script>
