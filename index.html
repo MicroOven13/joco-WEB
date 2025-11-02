@@ -212,6 +212,28 @@
         !menu.contains(e.target) && e.target !== btn) {
       menu.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
+document.addEventListener('DOMContentLoaded', function () {
+  const btn  = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mainmenu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (menu.classList.contains('open') &&
+        !menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+
+
     }
   });
 })();

@@ -509,37 +509,50 @@ header .container.nav{
   }
   .menu.open{ display:flex; }}
 
+/* ===== DESKTOP ALAP ===== */
 header .container.nav{
   display:flex; align-items:center; justify-content:space-between; gap:12px;
   position: relative;
 }
 .menu{ display:flex; gap:18px; }
-.menu-toggle{
-  display:none;                       
-  background:transparent; border:0; color:#fff;
-  font-size:28px; line-height:1;
+.menu-toggle{ display:none; }                 /* desktopon NEM látszik a burger */
+
+/* ===== DESKTOP KIKÉNYSZERÍTÉSE ===== */
+@media (min-width: 768px){
+  .menu-toggle{ display:none !important; }
+  .menu{
+    display:flex !important;
+    position:static !important;              /* ne legyen absolute desktopon */
+    background:transparent !important;
+  }
+  .menu a{ color:inherit !important; }
 }
 
-
+/* ===== MOBIL: 767px és alatta ===== */
 @media (max-width: 767px){
   .menu-toggle{
     display:inline-flex !important;
     align-items:center; justify-content:center;
-    width:44px; height:44px;          
+    width:44px; height:44px;
     border:1px solid #223045; border-radius:10px;
-    background:#0f1b2a; color:#fff;
+    background:#0f1b2a; color:#fff; cursor:pointer;
     z-index:60;
   }
   .menu{
-    position:absolute; left:0; right:0; top:100%;
-    display:none !important;          
-    flex-direction:column; gap:10px;
+    position:absolute; left:0; right:0; top:calc(100% + 6px);
+    display:none !important;                 /* alapból rejtve */
+    flex-direction:column; gap:6px;
     background:#0f1b2a; border-bottom:1px solid #223045;
-    padding:12px var(--gutter,16px);
+    padding:10px var(--gutter,16px);
     z-index:50;
   }
-  .menu.open{ display:flex !important; }
+  .menu a{
+    color:#fff !important;                   /* fehér linkek a sötét menüben */
+    padding:10px 2px; text-decoration:none;
+  }
+  .menu.open{ display:flex !important; }     /* nyitás */
 }
+
 
 @media (max-width: 767px){
   header .container.nav{
