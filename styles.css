@@ -540,3 +540,37 @@ header .container.nav{
   }
   .menu.open{ display:flex !important; }
 }
+
+@media (max-width: 767px){
+  header .container.nav{
+    justify-content: flex-start;    
+    gap: 12px;
+  }
+  .menu-toggle{
+    margin-left: 8px;              
+  }
+  .cta{
+    margin-left: auto;          
+  }
+  .menu{ top: calc(100% + 6px); }
+}
+
+.menu.open { display: flex !important; }
+.menu-toggle { display: none; }       
+@media (max-width: 767px){
+  .menu-toggle{ display:inline-flex !important; }
+  .menu{ position:absolute; left:0; right:0; top:calc(100% + 6px); display:none !important; flex-direction:column; /* ... */ }
+  .menu.open{ display:flex !important; }
+}
+/* Mindig működjön az .open váltás, bármi felülírás ellenére is */
+.menu.open { display:flex !important; }
+
+/* A gomb 100%-ban kattintható legyen, ne takarja semmi */
+.menu-toggle{ cursor:pointer; position:relative; z-index:100; pointer-events:auto; }
+.menu{ pointer-events:auto; }
+
+/* (Már megvan nálad, de biztos ami biztos) mobilon rejtett menü */
+@media (max-width: 767px){
+  .menu{ display:none !important; }
+  .menu.open{ display:flex !important; }
+}

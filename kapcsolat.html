@@ -12,7 +12,10 @@
     <a class="brand" href="index.html">Fehér József</a>
 
     <!-- HAMBURGER GOMB -->
-    <button class="menu-toggle" aria-expanded="false" aria-controls="mainmenu" aria-label="Menü">☰</button>
+    <button id="menu-toggle" type="button"
+        class="menu-toggle"
+        aria-expanded="false" aria-controls="mainmenu" aria-label="Menü">☰</button>
+
 
     <!-- MENÜ (ID KELL!) -->
     <nav class="menu" id="mainmenu">
@@ -208,6 +211,37 @@ document.addEventListener('DOMContentLoaded', function(){
     btn.addEventListener('click', function(){
       const open = menu.classList.toggle('open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  document.addEventListener('DOMContentLoaded', function(){
+    const btn  = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('mainmenu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function(){
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+(function () {
+  var btn  = document.getElementById('menu-toggle');
+  var menu = document.getElementById('mainmenu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();                       // ne buborékoljon tovább
+    var open = menu.classList.toggle('open');  // nyit/zár
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Menün kívül kattintásra zárjuk
+  document.addEventListener('click', function (e) {
+    if (menu.classList.contains('open') &&
+        !menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+
+
+    });
+  });
     });
   });
 </script>
