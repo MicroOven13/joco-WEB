@@ -645,8 +645,8 @@ header .container.nav{
 
 /* Bal oszlop */
 .about-photo {
-  background: none;
-  padding: 0;
+	background: none;
+  	padding: 0;
 }
 
 .about-photo img {
@@ -655,8 +655,9 @@ header .container.nav{
   height: auto;
   border-radius: 16px;
   border: 14px solid #fff;
-  box-shadow: 0 4px 18px rgba(15,23,42,0.08);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
 }
+
 
 .about-list{
   margin-top:28px;
@@ -904,9 +905,9 @@ body[data-page="about"] .page-hero .container.pad {
 }
 /* Távolság csökkentése a "Rólam" címsor és a tartalom (kép) között */
 .about .container.pad {
-    padding-top: 0;  /* Távolítsuk el a felső kitöltést ennél a szakasznál */
+  padding: 40px 0 100px 0;
 }
-/* Bekezdések sorkizárt igazítása a Rólam oldalon */
+
 .about-copy p {
     text-align: justify;
 }
@@ -919,4 +920,7 @@ body[data-page="about"] .page-hero .container.pad {
 
 .about .container.pad {
   padding-top: 40px; /* eddigi 100px helyett kisebb */
+}
+.page-hero .container.pad {
+  padding: 40px 0 20px 0;
 }
