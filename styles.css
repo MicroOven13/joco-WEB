@@ -630,3 +630,240 @@ header .container.nav{
   /* Nyitás: blokkban jelenjen meg (nem flex sor) */
   .menu.open{ display:block !important; }
 }
+/* ===== RÓLAM OLDAL ===== */
+.page-hero h1{
+  margin-bottom: 0;
+}
+
+/* Rács elrendezés */
+.about .about-grid{
+  display:grid;
+  grid-template-columns: minmax(260px, 420px) 1fr;
+  gap: 34px;
+  align-items:start;
+}
+
+/* Bal oszlop */
+.about-photo{
+  background:#fff;
+  border-radius:16px;
+  box-shadow: 0 4px 18px rgba(15,23,42,.08);
+  padding:14px;
+}
+.about-photo img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:12px;
+}
+
+.about-list{
+  margin-top:28px;
+}
+.about-list h3{
+  margin:0 0 8px 0;
+  font-size:18px;
+}
+.about-list ul{
+  margin: 10px 0 0 18px;
+  color:#374151;
+  line-height:1.6;
+}
+.about-list li{ margin:8px 0; }
+
+/* Jobb oszlop szöveg */
+.about-copy .eyebrow{
+  color:#6b7280;
+  font-size:14px;
+  margin:0 0 6px 0;
+}
+.about-copy h2{
+  margin:0 0 14px 0;
+  font-size:28px;
+}
+.about-copy h3{
+  margin:22px 0 8px 0;
+  font-size:20px;
+}
+
+/* Ki­emelés */
+.note{
+  margin:18px 0;
+  background:#fff7e0;
+  border-left:4px solid #f2b84b;
+  padding:12px 14px;
+  border-radius:8px;
+}
+
+/* Aláírás */
+.signature{
+  margin-top:14px;
+  color:#374151;
+}
+
+/* CTA a cikk végén */
+.about-cta{ margin-top:22px; }
+
+/* Reszponzív */
+@media (max-width: 991px){
+  .about .about-grid{ gap:24px; }
+}
+@media (max-width: 767px){
+  .about .about-grid{
+    grid-template-columns: 1fr;
+  }
+  .about-photo{ padding:10px; }
+}
+/* --- Rólam: cím és aláírás ne vegye át a globális header/footer hátteret --- */
+.about-copy .about-intro,
+.about .signature{
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* Finom spacing, hogy ne legyen túl nagy „levegő” felül */
+.page-hero{ padding: 18px 0 0; }
+.about .about-grid{ margin-top: 8px; }
+
+/* A bal oszlop címe közelebb legyen a képhez és egységes méret */
+.about-list h3{ font-size: 20px; margin: 18px 0 10px; }
+.about-copy h2{ font-size: 28px; margin: 0 0 14px; }
+/* Rács elrendezés és kártya-stílus a fotón */
+.about .about-grid{
+  display:grid;
+  grid-template-columns: minmax(260px, 420px) 1fr;
+  gap: 34px;
+  align-items: start;
+}
+
+.about-photo{
+  background:#fff;
+  border-radius:16px;
+  box-shadow: 0 4px 18px rgba(15,23,42,.08);
+  padding:14px;
+}
+.about-photo img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:12px;
+}
+
+/* „Eyebrow” és alcímek */
+.about-copy .eyebrow{ color:#6b7280; font-size:14px; margin:0 0 6px; }
+.about-copy h3{ margin:22px 0 8px; font-size:20px; }
+
+/* Sárga kiemelés blokk */
+.note{
+  margin:18px 0;
+  background:#fff7e0;
+  border-left:4px solid #f2b84b;
+  padding:12px 14px;
+  border-radius:8px;
+}
+
+/* Mobil */
+@media (max-width: 767px){
+  .about .about-grid{ grid-template-columns:1fr; gap:24px; }
+  .about-photo{ padding:10px; }
+}
+:root { --nav-h: 64px; } /* ha a nav 72px, írd át 72-re */
+
+.page-hero{
+  /* ez tolja le a Rólam címet a sötét sáv alól */
+  padding-top: calc(var(--nav-h) + 16px);
+  padding-bottom: 6px;     /* kicsi alsó térköz */
+}
+.about .about-grid{ 
+  margin-top: 10px;        /* a rács se csússzon a címbe */
+}/* Bal fotó kártya */
+.about-photo{
+  background:#fff;
+  border-radius:16px;
+  box-shadow: 0 4px 18px rgba(15,23,42,.08);
+  padding:14px;
+}
+.about-photo img{
+  display:block;
+  width:100%;
+  /* egységes képarány: nem lesz túl magas és nem nyúl bele semmibe */
+  aspect-ratio: 4 / 3;         /* 3:2 is jó: 3 / 2 */
+  object-fit: cover;
+  border-radius:12px;
+}
+
+/* Kicsit tágabb, elegáns desktop elrendezés */
+@media (min-width: 1200px){
+  .about .about-grid{
+    grid-template-columns: 460px 1fr; /* bal oszlop fix széles, mint a terven */
+    gap: 48px;
+  }
+  .about-photo{ padding:16px; border-radius:20px; }
+  .about-photo img{ border-radius:14px; }
+}
+
+/* Mobil – marad egysoros, de szellősebb */
+@media (max-width: 767px){
+  .about .about-grid{ grid-template-columns: 1fr; gap:24px; }
+  .about-photo{ padding:10px; }
+}
+/* ====== NAV TÁVOLSÁG / NE LÓGJON BE A CÍM ====== */
+:root { --nav-h: 64px; }                  /* ha a nav magasabb (pl. 72px), írd át */
+.page-hero{ padding-top: calc(var(--nav-h) + 18px); }  /* Rólam oldalcím lejjebb tolása */
+.about h1, .about h2, .about .eyebrow{    /* ha horgonyról ugrik ide, akkor se takarja ki */
+  scroll-margin-top: calc(var(--nav-h) + 12px);
+}
+
+/* ====== BAL OSZLOP / KÉPKÁRTYA NAGYOBBRA ====== */
+.about .about-grid{
+  display: grid;
+  grid-template-columns: minmax(320px, 520px) 1fr; /* nagyobb bal hasáb */
+  gap: 40px;
+  align-items: start;
+}
+
+/* Kártya: fehér hátterű, lekerekítve, árnyékkal */
+.about-photo{
+  background:#fff;               /* csak a kártya fehér */
+  border-radius:18px;
+  padding:16px;
+  box-shadow: 0 8px 24px rgba(15,23,42,.08);
+}
+
+/* Kép: nagyobb, egységes arányban, szépen kitöltve */
+.about-photo img{
+  display:block;
+  width:100%;
+  aspect-ratio: 3 / 2;           /* 4/3 is jó, de 3/2 kicsit „nagyobb” érzetet ad */
+  object-fit: cover;
+  border-radius:14px;
+}
+
+/* ====== A NAV-BÁR ALATTI TARTALOMBAN NE LEGYEN FEHÉR SÁV ====== */
+/* korábbi sötét/fehér dobozok elkerülése: hagyd benne bátran */
+.about-copy .about-intro,
+.about .signature{
+  background:transparent !important;
+  color:inherit !important;
+  padding:0 !important;
+  box-shadow:none !important;
+  border:0 !important;
+}
+
+/* ====== TIPÓ / FINOM SPACING ====== */
+.about-copy .eyebrow{ color:#6b7280; font-size:14px; margin:0 0 6px; }
+.about-copy h2{ font-size:28px; margin:0 0 14px; }
+.about-list h3{ font-size:20px; margin:18px 0 10px; }
+
+/* ====== MOBIL ====== */
+@media (max-width: 767px){
+  .about .about-grid{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .about-photo{ padding:12px; border-radius:16px; }
+  .about-photo img{ border-radius:12px; }
+}

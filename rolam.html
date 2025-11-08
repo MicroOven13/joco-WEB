@@ -6,147 +6,248 @@
     <title>Rólam – Fehér József</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+
+  <body data-page="about">  
+    <!-- HEADER -->
     <header>
-  <div class="container nav">
-    <a class="brand" href="index.html">Fehér József</a>
+      <div class="container nav">
+        <a class="brand" href="index.html">Fehér József</a>
 
-    <!-- HAMBURGER GOMB -->
-    <button id="menu-toggle" type="button"
-        class="menu-toggle"
-        aria-expanded="false" aria-controls="mainmenu" aria-label="Menü">☰</button>
+        <!-- Hamburger -->
+        <button id="menu-toggle" type="button" class="menu-toggle"
+          aria-expanded="false" aria-controls="mainmenu" aria-label="Menü">☰</button>
 
+        <!-- Menü -->
+        <nav class="menu" id="mainmenu" role="navigation" aria-label="Főmenü">
+          <a href="index.html">Főoldal</a>
+          <a href="rolam.html" class="active" aria-current="page">Rólam</a>
+          <a href="gyik.html">GYIK</a>
+          <a href="kapcsolat.html">Kapcsolat</a>
+        </nav>
 
-    <!-- MENÜ (ID KELL!) -->
-    <nav class="menu" id="mainmenu">
-  <a href="index.html">Főoldal</a>
-  <a href="rolam.html" class="active" aria-current="page">Rólam</a>
-  <a href="gyik.html">GYIK</a>
-  <a href="kapcsolat.html">Kapcsolat</a>
-</nav>
+        <a class="cta" href="kapcsolat.html">Időpontkérés</a>
+      </div>
+    </header>
 
-
-    <a class="cta" href="kapcsolat.html">Időpontkérés</a>
-  </div>
-</header>
-
-
-    <section class="hero">
+    <!-- OLDALCÍM -->
+    <section class="page-hero">
       <div class="container pad">
         <h1>Rólam</h1>
-        <p>
-          Fehér József vagyok, pénzügyi szakértő 2009 óta. A mérnöki diplomámnak
-          köszönhetően rendkívül gyorsan átlátok pénzügyi helyzeteket és
-          pénzügyi termékeket közti különbségeket.
-        </p>
-        <p>
-          Büszke vagyok rá, hogy a GRANTIS csapatába tartozhatok, mert tudom,
-          hogy itt a minőségi, független kiszolgálás az első, és mint cégünk
-          eredményei is mutatják, ebben a szakmában hosszú távon csak az lehet
-          sikeres, aki megfelelő értékrenddel rendelkezik, és az ügyfél érdekeit
-          tartja az első helyen. Hálás vagyok annak a közel 700 ügyfelemnek,
-          akiknek kezelem a pénzügyeit.
-        </p>
-        <div class="hero-img mt-16 portrait">
-  <img class="profile-img"
-       src="https://grantis.hu/app/uploads/2021/07/feher-jozsef-fejlec-1.jpg"
-       alt="Fehér József portré">
-</div>
+      </div>
+    </section>
 
-</section>
+    <!-- ABOUT -->
+    <section class="about">
+      <div class="container pad about-grid">
+        <!-- Bal oszlop: fotó + bullet lista -->
+        <aside class="about-left">
+          <figure class="about-photo">
+            <img
+              src="feher-jozsef-fejlec-1.jpg"
+              alt="Fehér József – portré"
+              loading="lazy"
+              width="900" height="900"
+            />
+          </figure>
+
+          <div class="about-list">
+            <h3>Miben számíthat rám?</h3>
+            <ul>
+              <li>
+                <strong>Teljes körű pénzügyi átvilágítás:</strong>
+                segítek feltérképezni jelenlegi helyzetét.
+              </li>
+              <li>
+                <strong>Személyre szabott stratégia:</strong>
+                egyéni igényeihez és céljaihoz igazított pénzügyi tervek készítése.
+              </li>
+              <li>
+                <strong>Hosszú távú partnerség:</strong>
+                folyamatos támogatás és tanácsadás a változó élethelyzetekhez.
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Jobb oszlop: szöveg -->
+        <article class="about-copy">
+          <header class="about-intro">
+            <p class="eyebrow">Több mint egy évtizednyi tapasztalat, több mint 2000 sikertörténet</p>
+            <h2>Fehér József – A Te megbízható pénzügyi tanácsadód</h2>
+          </header>
+
+          <p><em>Kedves Látogató!</em></p>
+          <p>
+            Üdvözöllek a honlapomon! Fehér József vagyok, pénzügyi tanácsadó.
+            Küldetésem, hogy segítsek elérni a pénzügyi céljaidat – legyen szó
+            biztonságos megtakarításról, előnyös hitelfelvételről vagy hosszú távú
+            befektetésről.
+          </p>
+
+          <h3>A kezdetek és a tapasztalat</h3>
+          <p>
+            Pénzügyi pályafutásomat <strong>2009-ben</strong> kezdtem, és azóta is
+            szenvedéllyel foglalkozom azzal, hogy ügyfeleim számára a
+            legmegfelelőbb pénzügyi megoldásokat találjam meg. Az évek során
+            széles körű szakmai tapasztalatot szereztem a megtakarítások,
+            befektetések és hitelek világában, a piac folyamatosan változó
+            kihívásai közepette.
+          </p>
+
+          <h3>A számok beszélnek</h3>
+          <p>
+            A legnagyobb büszkeséggel tölt el, hogy az elmúlt évek során
+            <strong>több mint 2000 ügyfélnek</strong> lehettem a személyes pénzügyi
+            tanácsadója. Ez a szám nem csupán statisztika: minden ügyfél egy
+            bizalmi kapcsolat és egy valódi pénzügyi cél megvalósulása. Ügyfélköröm
+            a magánszemélyektől a vállalkozásokig terjed, és minden esetben az
+            egyedi igényekre fókuszálok. Amire különösen büszke vagyok: ügyfeleim
+            mintegy <strong>70%-ának</strong> évek óta én kezelem a pénzügyeit –
+            nem csak egy szerződés erejéig, hanem hosszú távon, a fontos döntések
+            mögött is ott vagyok.
+          </p>
+
+          <h3>Személyes elkötelezettség</h3>
+          <p>
+            Hiszek abban, hogy a sikeres pénzügyi tanácsadás alapja a személyes
+            bizalom és a mélyreható megértés. Nem csupán termékeket ajánlok,
+            hanem partnerként segítek a döntéshozatalban. A célom, hogy ne
+            érezd magad elveszettnek a pénzügyi útvesztőben, hanem magabiztosan,
+            tudatosan hozd meg azokat a döntéseket, amelyek a legjobb jövőt
+            biztosítják Neked és családodnak.
+          </p>
+
+          <div class="note">
+            <p><strong>Ne a véletlenre bízd a pénzügyeidet!</strong>
+              Hagyd, hogy a 2009 óta felhalmozott tapasztalatom a Te sikeredet
+              szolgálja.</p>
+          </div>
+
+          <p>
+            Kérlek, keress bizalommal, hogy megbeszélhessük: hogyan tehetem rendbe,
+            és fejleszthetem tovább a pénzügyeidet!
+          </p>
+
+          <p>
+            Nélkülem is el lehet érni pénzügyi célokat – <strong>velem
+            könnyebb és gyorsabb</strong> 😊
+          </p>
+
+          <footer class="signature">
+            <p>Üdvözlettel,</p>
+            <p><strong>Fehér József</strong><br>
+              vezető pénzügyi szakértő</p>
+          </footer>
+
+          <div class="about-cta">
+            <a class="btn primary" href="kapcsolat.html">Időpontkérés</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
       <div class="container">
-        <div style="font-size: 12px">
-          © <span id="yearR"></span> Fehér József •
-            <a href="adatkezeles.html">Adatkezelési tájékoztató</a> •
-            <a href="jogi-nyilatkozat.html">Jogi nyilatkozat</a>
-
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+          <strong>Fehér József</strong>
+          <div style="font-size:12px">
+            © <span id="year"></span> Fehér József •
+            <a href="adatkezeles.html">Adatkezelési tájékoztató</a>
+          </div>
         </div>
       </div>
     </footer>
+
+    <!-- Year + Menü script -->
     <script>
-      document.getElementById("yearR").textContent = new Date().getFullYear();
-  document.addEventListener('DOMContentLoaded', function(){
-    const btn  = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('mainmenu');
-    if (!btn || !menu) return;
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-    btn.addEventListener('click', function(){
-      const open = menu.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  document.addEventListener('DOMContentLoaded', function(){
-    const btn  = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('mainmenu');
-    if (!btn || !menu) return;
-    btn.addEventListener('click', function(){
-      const open = menu.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-(function () {
-  var btn  = document.getElementById('menu-toggle');
-  var menu = document.getElementById('mainmenu');
-  if (!btn || !menu) return;
+      document.addEventListener('DOMContentLoaded', function(){
+        const btn  = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mainmenu');
+        if (!btn || !menu) return;
 
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();                       // ne buborékoljon tovább
-    var open = menu.classList.toggle('open');  // nyit/zár
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          const open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
 
-  // Menün kívül kattintásra zárjuk
-  document.addEventListener('click', function (e) {
-    if (menu.classList.contains('open') &&
-        !menu.contains(e.target) && e.target !== btn) {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-document.addEventListener('DOMContentLoaded', function () {
-  const btn  = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mainmenu');
-  if (!btn || !menu) return;
+        document.addEventListener('click', function(e){
+          if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== btn) {
+            menu.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
 
-  btn.addEventListener('click', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const open = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
+        // menüpont választás után zárjon
+        menu.querySelectorAll('a').forEach(a=>{
+          a.addEventListener('click', ()=>{
+            if (menu.classList.contains('open')) {
+              menu.classList.remove('open');
+              btn.setAttribute('aria-expanded','false');
+            }
+          });
+        });
+      });
+    </script><!-- TEMP: Rólam oldal felülírások – tedd a </body> elé -->
+<style>
+  :root{ --nav-h:64px; } /* ha a nav magasabb (pl. 72px), ezt írd át */
 
-  document.addEventListener('click', function (e) {
-    if (menu.classList.contains('open') &&
-        !menu.contains(e.target) && e.target !== btn) {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-document.addEventListener('DOMContentLoaded', function(){
-  const btn  = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mainmenu');
-  if (!btn || !menu) return;
-  btn.addEventListener('click', function(e){
-    e.preventDefault(); e.stopPropagation();
-    const open = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  document.addEventListener('click', function(e){
-    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== btn) {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded','false');
+  /* NAV alól induljon a tartalom, a cím ne lógjon be */
+  body[data-page="about"] .page-hero{
+    padding-top: calc(var(--nav-h) + 18px) !important;
+  }
+  /* ha horgonnyal ide érkezel, akkor se takarja a nav */
+  body[data-page="about"] h1, 
+  body[data-page="about"] h2, 
+  body[data-page="about"] .eyebrow{
+    scroll-margin-top: calc(var(--nav-h) + 12px) !important;
+  }
+
+  /* Bal hasáb nagyobb + rács */
+  body[data-page="about"] .about-grid{
+    display: grid !important;
+    grid-template-columns: minmax(320px, 520px) 1fr !important;
+    gap: 40px !important;
+    align-items: start !important;
+  }
+
+  /* Fehér kártya csak a kép alatt, nagyobb kép */
+  body[data-page="about"] .about-photo{
+    background:#fff !important;
+    border-radius:18px !important;
+    padding:16px !important;
+    box-shadow: 0 8px 24px rgba(15,23,42,.08) !important;
+  }
+  body[data-page="about"] .about-photo img{
+    display:block !important;
+    width:100% !important;
+    aspect-ratio: 3 / 2 !important;   /* 4/3 is lehet, ha azt szeretnéd */
+    object-fit: cover !important;
+    border-radius:14px !important;
+  }
+
+  /* A cikken belüli intro/aláírás ne kapjon sötét/fehér hátteret */
+  body[data-page="about"] .about-intro,
+  body[data-page="about"] .signature{
+    background: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  @media (max-width: 767px){
+    body[data-page="about"] .about-grid{
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
     }
-  });
-});
+    body[data-page="about"] .about-photo{ padding:12px !important; border-radius:16px !important; }
+    body[data-page="about"] .about-photo img{ border-radius:12px !important; }
+  }
+</style>
 
-
-    }
-  });
-});
-
-
-    }
-  });
-})();
-
-
-    });
-  });
-    });
-  });
-    </script>
   </body>
 </html>
