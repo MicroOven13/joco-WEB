@@ -924,3 +924,23 @@ body[data-page="about"] .page-hero .container.pad {
 .page-hero .container.pad {
   padding: 40px 0 20px 0;
 }
+.clickable-card {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.clickable-card:hover {
+  transform: scale(1.02);
+}
+
+.clickable-card .card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s;
+}
+.clickable-card .card:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
