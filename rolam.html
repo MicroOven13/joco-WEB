@@ -161,6 +161,86 @@
 
     <!-- Year + Menü script -->
     <script>
+    
+    
+  // Jelöljük meg a body-t, ha a Rólam oldalon vagyunk
+  (function(){
+    if (location.pathname.toLowerCase().indexOf('rolam') !== -1) {
+      document.body.classList.add('about-page');
+    }
+  })();
+</script>
+
+<style>
+  /* Ha a nav takarja a címet, ezzel induljon lejjebb a tartalom */
+  .about-page .page-hero { 
+    padding-top: calc(var(--nav-h, 72px) + 18px) !important; 
+  }
+  /* Anchor görgetésnél se takarja a nav a címeket */
+  .about-page h1, 
+  .about-page h2, 
+  .about-page .eyebrow { 
+    scroll-margin-top: calc(var(--nav-h, 72px) + 12px) !important; 
+  }
+
+  /* Két hasábos rács: baloldalt a fotó (szélesebb), jobbra a szöveg */
+  .about-page .about-grid{
+    display: grid !important;
+    grid-template-columns: minmax(320px, 560px) 1fr !important; /* itt tudod tovább növelni a bal hasáb max szélt */
+    gap: 40px !important;
+    align-items: start !important;
+  }
+
+  /* A fehér kártya csak a kép mögött legyen, ne a teljes blokk mögött */
+  .about-page .about-photo{
+    background: #fff !important;
+    border-radius: 18px !important;
+    padding: 16px !important;
+    box-shadow: 0 8px 24px rgba(15,23,42,.08) !important;
+  }
+  .about-page .about-photo img{
+    display: block !important;
+    width: 100% !important;
+    aspect-ratio: 3 / 2 !important;   /* 4/3 is lehet; ha több vállból szeretnéd, tedd 4/3-ra */
+    object-fit: cover !important;
+    border-radius: 14px !important;
+  }
+
+  /* Biztonsági semlegesítés: ha volt sötét/fehér háttér a szöveg mögött, szedjük le */
+  .about-page .about-copy,
+  .about-page .about-intro,
+  .about-page .signature{
+    background: transparent !important;
+    color: inherit !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Mobilon egymás alá rendezés */
+  @media (max-width: 767px){
+    .about-page .about-grid{
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+    .about-page .about-photo{ padding: 12px !important; border-radius: 16px !important; }
+    .about-page .about-photo img{ border-radius: 12px !important; }
+  }
+
+  /* FALLBACK: ha nincsenek 'about-grid' és 'about-photo' osztályok,
+     próbáljuk eltalálni a szerkezetet a meglévő 'container' alapján is */
+  .about-page .container .about-photo img,
+  .about-page .container img.square-img{
+    display:block !important; width:100% !important;
+    aspect-ratio:3/2 !important; object-fit:cover !important; border-radius:14px !important;
+  }
+  .about-page .container .about-photo,
+  .about-page .container .square{
+    background:#fff !important; border-radius:18px !important;
+    padding:16px !important; box-shadow:0 8px 24px rgba(15,23,42,.08) !important;
+  }
+</style>
+<script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
       document.addEventListener('DOMContentLoaded', function(){

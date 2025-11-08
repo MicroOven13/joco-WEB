@@ -867,3 +867,33 @@ header .container.nav{
   .about-photo{ padding:12px; border-radius:16px; }
   .about-photo img{ border-radius:12px; }
 }
+/* ========= RÓLAM oldal: a cím fölötti üres hely szűkítése ========= */
+
+/* kisebb top padding a hero-n (és alul is kicsit kevesebb) */
+body.about-page .page-hero,
+body[data-page="about"] .page-hero,
+body.about-page .about-hero,                 /* ha másik class-t használsz */
+body[data-page="about"] .about-hero,
+body.about-page section.hero,                /* fallback, ha section.hero a neve */
+body[data-page="about"] section.hero {
+  padding-top: calc(var(--nav-h, 64px) + 8px) !important;  /* eddig >40–80px lehetett */
+  padding-bottom: 12px !important;
+  display: flow-root; /* megakadályozza a margin-összeomlást */
+}
+
+/* az első H1 ne adjon extra felső margót */
+body.about-page .page-hero h1,
+body[data-page="about"] .page-hero h1,
+body.about-page .about-hero h1,
+body[data-page="about"] .about-hero h1,
+body.about-page section.hero h1,
+body[data-page="about"] section.hero h1 {
+  margin-top: 0 !important;
+  margin-bottom: 16px !important;
+}
+
+/* ha a hero .container-ére rátettél pad-et, azt is vegyük le */
+body.about-page .page-hero .container.pad,
+body[data-page="about"] .page-hero .container.pad {
+  padding-top: 0 !important;
+}
