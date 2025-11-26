@@ -1209,9 +1209,11 @@ body[data-page="about"] .page-hero .container.pad {
 
 #szolgaltatasok .cards {
   display: grid;
-  grid-template-columns: 1fr;   /* mobilon 1 oszlop */
-  gap: 16px;
+  grid-template-columns: 1fr;
+  row-gap: 12px;      /* VERTIKÁLIS – nagyon pici rés a kockák között */
+  column-gap: 24px;  /* HORIZONTÁLIS – maradhat nagyobb */
 }
+
 
 /* kártyák töltsék ki a grid cellát */
 #szolgaltatasok .cards .card,
