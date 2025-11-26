@@ -1237,3 +1237,14 @@ body[data-page="about"] .page-hero .container.pad {
   margin-right: 0;
 }
 
+/* Életbiztosítás kártya legyen magasabb */
+.card-elet {
+  min-height: 100px;   /* kísérletezz: 200–260px körül */
+}
+/* Csak nagyobb kijelzőn legyen egy kicsit magasabb a Nyugdíj + Életbiztosítás kártya */
+@media (min-width: 1024px) {
+  .card-nyugdij,
+  .card-elet {
+    min-height: 190px;  /* ha még így is magas, nyugodtan próbáld 180 / 170-re */
+  }
+}
