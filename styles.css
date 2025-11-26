@@ -1183,27 +1183,3 @@ body[data-page="about"] .page-hero .container.pad {
   }
 }
 /* --- Szolgáltatás kártyák – mind gomb legyen, mint a Nyugdíj --- */
-
-.cards a.service-link {
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;    /* ne vegye fel a teljes szélességet */
-  max-width: 640px;         /* kb. akkora, mint a Nyugdíj-kártya */
-}
-
-.cards {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: flex-start;   /* kártyák balra igazítva, egymás alatt */
-}
-
-.cards a.service-link .card {
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.cards a.service-link:hover .card {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 45px rgba(15, 27, 42, 0.18);
-}

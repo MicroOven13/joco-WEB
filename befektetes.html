@@ -3,11 +3,42 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Befektetés<main class="nyugdij-main">
+		<title>Életbiztosítás</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body class="nyugdij-oldal">
+		<header>
+			<div class="container nav">
+				<a class="brand" href="index.html">Fehér József</a>
+
+				<!-- hamburger gomb mobilra -->
+				<button
+					id="menu-toggle"
+					type="button"
+					class="menu-toggle"
+					aria-expanded="false"
+					aria-controls="mainmenu"
+					aria-label="Menü"
+				>
+					☰
+				</button>
+
+				<!-- menü -->
+				<nav class="menu" id="mainmenu">
+					<a href="index.html">Főoldal</a>
+					<a href="rolam.html">Rólam</a>
+					<a href="gyik.html">GYIK</a>
+					<a href="kapcsolat.html">Kapcsolat</a>
+				</nav>
+
+				<a class="cta" href="kapcsolat.html">Időpontkérés</a>
+			</div>
+		</header>
+		<main class="nyugdij-main">
 			<!-- FELSŐ BLOKK – kép + szöveg + zöld pipás sorok -->
 			<section class="nyugdij-hero">
 				<div class="container pad">
-					<h1 class="nyugdij-title">Befektetésk</h1>
+					<h1 class="nyugdij-title">Életbiztosítás</h1>
 
 					<div class="nyugdij-hero-grid">
 						<!-- Bal oldali kép (aggódó nyugdíjas) -->
@@ -30,33 +61,22 @@
 							<h2 class="nyugdij-subtitle">Miben tudok segíteni neked?</h2>
 
 							<ul class="nyugdij-benefits">
-								<li>
-									<strong>Több mint 15 év tapasztalat</strong> (2009 óta): Több
-									ezer esetet láttam, tudom, mely buktatókat kell elkerülni.
-								</li>
-								<li>
-									<strong>40+ Pénzintézet 90–100 terméke</strong>: Az én célom
-									nem egy termék eladása, hanem az Te gondtalan nyugdíjas éveid
-									biztosítása.
-								</li>
-								<li>
-									<strong>Segítség a döntésben</strong>: Segítek kiválasztani a
-									legjobb nyugdíjmegtakarítást, figyelembe véve a megtakarítás
-									költségeit, múltbeli hozamait összevetve a tapasztalataimmal.
-								</li>
-								<li>
-									<strong>Maximális adójóváírás</strong>: Segítek kihasználni a
-									maximális állami támogatást, max. 280&nbsp;000 Ft/év – ezt nem
-									hagyhatja figyelmen kívül!
-								</li>
-							</ul>
+								<ul class="nyugdij-benefits">
+  <li>✅ Teljes körű helyzetfelmérés: felmérjük a családod bevételeit, kiadásait, kötelezettségeit.</li>
+  <li>✅ Testreszabott védelem: közösen döntünk a szükséges biztosítási összegről és tartalomról.</li>
+  <li>✅ Több biztosító ajánlatából választunk, átláthatóan összehasonlítva a díjakat és feltételeket.</li>
+  <li>✅ Segítek abban, hogy a szerződés valóban azt tudja, amire szükséged van – ne csak „papíron” legyen jó.</li>
+</ul>
+
 
 							<p class="nyugdij-cta-text">
 								Keress meg, hogy megtaláljuk azt a nyugdíjbiztosítást, ami
 								garantálja neked a gondtalan nyugdíjas éveket!
-                <strong>Neked kell dönteni, hogy csekkekkel akarsz sakkozni otthon vagy a
-							tengerparton élvezni az életed utolsó részét. A kettőt csak havi
-							30–50&nbsp;ezer forint választja el!</strong> 
+								<strong
+									>Neked kell dönteni, hogy csekkekkel akarsz sakkozni otthon
+									vagy a tengerparton élvezni az életed utolsó részét. A kettőt
+									csak havi 30–50&nbsp;ezer forint választja el!</strong
+								>
 							</p>
 						</div>
 					</div>
@@ -65,18 +85,20 @@
 
 			<!-- ALSÓ BLOKK – tengerpartos kép + szöveg -->
 			<!-- Alsó blokk: két kép egymás mellett + szöveg -->
-<section class="nyugdij-bottom">
-  <div class="nyugdij-bottom-img-row">
-    <figure class="nyugdij-bottom-photo">
-      <img src="Nyugdíj.jpg" alt="Nyugdíjasok a tengerparton">
-    </figure>
+			<section class="nyugdij-bottom">
+				<div class="nyugdij-bottom-img-row">
+					<figure class="nyugdij-bottom-photo">
+						<img src="Nyugdíj.jpg" alt="Nyugdíjasok a tengerparton" />
+					</figure>
 
-    <figure class="nyugdij-bottom-photo">
-      <img src="Penz-penz-penz-5-csillagjegynek-sok-a-sok-sok-penz-a-kovetkezo-2-hetben.webp" alt="Forint bankjegyek">
-    </figure>
-  </div>
-</section>
-
+					<figure class="nyugdij-bottom-photo">
+						<img
+							src="Penz-penz-penz-5-csillagjegynek-sok-a-sok-sok-penz-a-kovetkezo-2-hetben.webp"
+							alt="Forint bankjegyek"
+						/>
+					</figure>
+				</div>
+			</section>
 
 			<section class="hero">
 				<div class="container pad">
@@ -198,64 +220,50 @@
 				</div>
 			</section>
 		</main>
-    <footer>
-      <div class="container">
-        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;">
-          <strong>Fehér József</strong>
-          <div style="font-size:12px">
-            © <span id="year"></span> Fehér József •
-            <a href="adatkezeles.html">Adatkezelési tájékoztató</a> •
-            <a href="joginyilatkozat.html">Jogi nyilatkozat</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-      <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      const btn  = document.getElementById('menu-toggle');
-      const menu = document.getElementById('mainmenu');
-      if (!btn || !menu) return;
+		<footer>
+			<div class="container">
+				<div
+					style="
+						display: flex;
+						flex-wrap: wrap;
+						gap: 10px;
+						align-items: center;
+						justify-content: space-between;
+					"
+				>
+					<strong>Fehér József</strong>
+					<div style="font-size: 12px">
+						© <span id="year"></span> Fehér József •
+						<a href="adatkezeles.html">Adatkezelési tájékoztató</a> •
+						<a href="joginyilatkozat.html">Jogi nyilatkozat</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const btn = document.getElementById("menu-toggle");
+				const menu = document.getElementById("mainmenu");
+				if (!btn || !menu) return;
 
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        const open = menu.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
+				btn.addEventListener("click", function (e) {
+					e.preventDefault();
+					e.stopPropagation();
+					const open = menu.classList.toggle("open");
+					btn.setAttribute("aria-expanded", open ? "true" : "false");
+				});
 
-      document.addEventListener('click', function(e){
-        if (menu.classList.contains('open') &&
-            !menu.contains(e.target) && e.target !== btn) {
-          menu.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-  </script>
-</body>
-</html></title>
-		<link rel="stylesheet" href="styles.css" />
-	</head>
-	<body class="nyugdij-oldal">
-  <header>
-    <div class="container nav">
-      <a class="brand" href="index.html">Fehér József</a>
-
-      <!-- hamburger gomb mobilra -->
-      <button id="menu-toggle" type="button"
-              class="menu-toggle"
-              aria-expanded="false"
-              aria-controls="mainmenu"
-              aria-label="Menü">☰</button>
-
-      <!-- menü -->
-      <nav class="menu" id="mainmenu">
-        <a href="index.html">Főoldal</a>
-        <a href="rolam.html">Rólam</a>
-        <a href="gyik.html">GYIK</a>
-        <a href="kapcsolat.html">Kapcsolat</a>
-      </nav>
-
-      <a class="cta" href="kapcsolat.html">Időpontkérés</a>
-    </div>
-  </header>
+				document.addEventListener("click", function (e) {
+					if (
+						menu.classList.contains("open") &&
+						!menu.contains(e.target) &&
+						e.target !== btn
+					) {
+						menu.classList.remove("open");
+						btn.setAttribute("aria-expanded", "false");
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
