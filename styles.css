@@ -1185,9 +1185,29 @@ body[data-page="about"] .page-hero .container.pad {
 /* --- Szolgáltatás kártyák – mind gomb legyen, mint a Nyugdíj --- */
 /* --- Szolgáltatások kártyák egységes elrendezése --- */
 
-#szolgaltatasok .cards .card:first-child {
-  grid-column: 1 / -1;
+/* ===== Szolgáltatások kártyák elrendezése ===== */
+
+/* Alapértelmezés: mobilon 1 oszlop */
+#szolgaltatasok .cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
 }
+
+/* Kártyák töltsék ki a cellát (a gomb-link teljes szélességű legyen) */
+#szolgaltatasok .cards .card,
+#szolgaltatasok .cards .szolgaltatas-card {
+  width: 100%;
+  max-width: none;
+}
+
+/* Nagyobb kijelzőn: 2 oszlop (pl. laptop/desktop) */
+@media (min-width: 992px) {
+  #szolgaltatasok .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 
 /* Minden szolgáltatás kártya legyen teljes szélességű */
 #szolgaltatasok .cards .card,
