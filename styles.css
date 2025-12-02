@@ -1248,3 +1248,36 @@ body[data-page="about"] .page-hero .container.pad {
     min-height: 190px;  /* ha még így is magas, nyugodtan próbáld 180 / 170-re */
   }
 }
+/* ===== RÓLAM oldal: bal oszlop "ragadós", jobb oldali szöveg görgethető ===== */
+
+/* a két hasáb felső élre igazodjon, ne középre */
+.rolam-page .about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* bal oszlop ragadjon a header alá */
+.rolam-page .about-left {
+  position: sticky;
+  top: 120px;          /* ha túl fent / lent van, nyugodtan állítsd: 90–140px között */
+  align-self: flex-start;
+}
+
+/* jobb oszlop marad sima, csak kitölti a helyet */
+.rolam-page .about-copy {
+  align-self: flex-start;
+}
+
+/* mobilon NE legyen sticky, ott menjenek egymás alatt */
+@media (max-width: 900px) {
+  .rolam-page .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rolam-page .about-left {
+    position: static;
+    top: auto;
+  }
+}
