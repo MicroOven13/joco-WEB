@@ -1378,3 +1378,23 @@ body[data-page="about"] .page-hero .container.pad {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+/* Vissza a főoldalra gomb – szolgáltatás aloldalak tetején */
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #38bdf8;         /* világoskék, passzol a többi elemhez */
+  text-decoration: none;
+}
+
+.back-home::before {
+  content: "←";
+  font-size: 14px;
+}
+
+.back-home:hover {
+  text-decoration: underline;
+}
