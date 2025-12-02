@@ -1253,7 +1253,7 @@ body[data-page="about"] .page-hero .container.pad {
 /* a két hasáb felső élre igazodjon, ne középre */
 .rolam-page .about-grid {
   display: grid;
-  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 470px) minmax(0, 1fr);
   gap: 48px;
   align-items: flex-start;
 }
