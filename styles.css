@@ -1222,7 +1222,7 @@ body[data-page="about"] .page-hero .container.pad {
 /* nagyobb kijelzőn: 2 oszlop */
 @media (min-width: 768px) {
   #szolgaltatasok .cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(1fr, 1fr));
   }
 }
 /* --- Szolgáltatások: 2 oszlop desktopon, 1 oszlop mobilon --- */
@@ -1299,5 +1299,82 @@ body[data-page="about"] .page-hero .container.pad {
   .rolam-page .about-left {
     position: static;
     top: auto;
+  }
+}
+/* ===== Szolgáltatások elrendezése – FORCE 😄 ===== */
+
+/* Alap: mobilon 1 oszlop */
+#szolgaltatasok .cards {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 24px;
+}
+
+/* A kártyák töltsék ki a cellát */
+#szolgaltatasok .cards .card,
+#szolgaltatasok .cards .szolgaltatas-card {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Tablet / desktop: 2 oszlop */
+@media (min-width: 768px) {
+  #szolgaltatasok .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+/* ===== Szolgáltatások elrendezése – mobilon 1 oszlop, gépen 2x3 ===== */
+
+/* Alap: mobil + kis kijelző – 1 oszlop */
+#szolgaltatasok .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Kártyák töltsék ki a sort */
+#szolgaltatasok .cards .card,
+#szolgaltatasok .cards .szolgaltatas-card {
+  width: 100%;
+  max-width: none;
+}
+
+/* Nagyobb kijelzőn: két oszlop (3 sor) */
+@media (min-width: 992px) {
+  #szolgaltatasok .cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  #szolgaltatasok .cards .card,
+  #szolgaltatasok .cards .szolgaltatas-card {
+    flex: 1 1 calc(50% - 12px); /* 2 kártya / sor */
+  }
+}
+/* ===== Szolgáltatások elrendezése ===== */
+
+/* Kattintható kártya link */
+#szolgaltatasok .cards .clickable-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Kártyák kitöltik a rendelkezésre álló teret */
+#szolgaltatasok .cards .card {
+  height: 100%;
+}
+
+/* Alap: mobilon 1 oszlop */
+#szolgaltatasok .cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* 992px felett: 2 oszlop (3 sor) */
+@media (min-width: 992px) {
+  #szolgaltatasok .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
