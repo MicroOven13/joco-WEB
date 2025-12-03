@@ -1411,3 +1411,9 @@ body[data-page="about"] .page-hero .container.pad {
 .kapcsolat-oldal header .cta {
   display: none;
 }
+/* Rólam oldal: címek középre */
+.rolam-page .about-copy h1,
+.rolam-page .about-copy h2,
+.rolam-page .about-copy h3 {
+  text-align: center;
+}
