@@ -46,7 +46,7 @@
 						<!-- Bal oldali kép (aggódó nyugdíjas) -->
 						<figure class="nyugdij-hero-image">
 							<img
-								src="Nyugdíjas.jpg"
+								src="inflacio  2.png"
 								alt="Aggódó nyugdíjas a számlái fölött"
 							/>
 						</figure>
@@ -54,31 +54,25 @@
 						<!-- Jobb oldali szöveg -->
 						<div class="nyugdij-hero-text">
 							<p class="nyugdij-overtitle">
-								Nyugdíjbiztosítás, NYESZ, ÖNYP, TKM, hozam, lejárat, adózás,
-								költség, szüneteltetés – ha ezeket nem tudod, mi alapján
-								választod ki a legjobb nyugdíjmegtakarítást kb. 40 pénzintézet
-								közül?
+								<strong>
+								Párnában, befőttesüvegben, folyószámlán, lekötésben, állampapírban, részvényben , aranyban, ingatlanban, befektetési alapban,  ETF ben, TBSZ -en , ha nem tudod biztosan melyiket válaszd lehet érdemes konzultálnunk.
+							</strong>
 							</p>
 
-							<h2 class="nyugdij-subtitle">Miben tudok segíteni neked?</h2>
+							<h2 class="nyugdij-subtitle">A nagy kérdés, mibe és hol tartsd a befektetésidet?</h2>
 
 							<ul class="nyugdij-benefits">
 								<ul class="nyugdij-benefits">
-  <li>✅ Teljes körű helyzetfelmérés: felmérjük a családod bevételeit, kiadásait, kötelezettségeit.</li>
-  <li>✅ Testreszabott védelem: közösen döntünk a szükséges biztosítási összegről és tartalomról.</li>
-  <li>✅ Több biztosító ajánlatából választunk, átláthatóan összehasonlítva a díjakat és feltételeket.</li>
+  <li>✅ Több mint 15 év Tapasztalattal (2009 óta): Több ezer esetet láttam, tudom, mely buktatókat kell elkerülni.</li>
+  <li>✅ 40+ Pénzintézet 90-100 terméke: Az én célom nem egy termék eladása, hanem az hogy a  Te pénzed megőrizze a vásárlóértékét .</li>
+  <li>✅ Segítség a döntésben: Segítek kiválasztani a legjobb befektetést, figyeltbe véve a befektetés költségeit, múltbeli hozamait összevetve a tapasztalataimmal. </li>
   <li>✅ Segítek abban, hogy a szerződés valóban azt tudja, amire szükséged van – ne csak „papíron” legyen jó.</li>
 </ul>
 
 
 							<p class="nyugdij-cta-text">
-								Keress meg, hogy megtaláljuk azt a nyugdíjbiztosítást, ami
-								garantálja neked a gondtalan nyugdíjas éveket!
-								<strong
-									>Neked kell dönteni, hogy csekkekkel akarsz sakkozni otthon
-									vagy a tengerparton élvezni az életed utolsó részét. A kettőt
-									csak havi 30–50&nbsp;ezer forint választja el!</strong
-								>
+								Keress meg, hogy megtaláljuk azt a befektetést, ami garantálja neked, hogy az infláció ne égesse el a befektetésedet! 
+								Neked kell dönteni mit szeretnél látni, 5 év múlva, hogy alig ér valamit a befektetésed vagy többszörösére duzzadt.
 							</p>
 						</div>
 					</div>
@@ -90,12 +84,12 @@
 			<section class="nyugdij-bottom">
 				<div class="nyugdij-bottom-img-row">
 					<figure class="nyugdij-bottom-photo">
-						<img src="Nyugdíj.jpg" alt="Nyugdíjasok a tengerparton" />
+						<img src="befektetesi alapok-1500.webp" alt="Nyugdíjasok a tengerparton" />
 					</figure>
 
 					<figure class="nyugdij-bottom-photo">
 						<img
-							src="Penz-penz-penz-5-csillagjegynek-sok-a-sok-sok-penz-a-kovetkezo-2-hetben.webp"
+							src="2148780591.webp"
 							alt="Forint bankjegyek"
 						/>
 					</figure>
@@ -109,11 +103,10 @@
 					Elérhetőség: <strong>feherj@grantis.hu</strong> •
 					<strong>+36 30 634 0195</strong>
 				</p>
-				<form
-					class="mt-16"
-					action="https://formspree.io/f/mzzkygya"
-					method="POST"
-				>
+				<form class="mt-16"
+      action="https://formspree.io/f/mzzkygya"
+      method="POST">
+
 					<div>
 						<label>Név*</label>
 						<input required name="name" placeholder="" />
@@ -216,7 +209,7 @@
 				</form>
 
 				<p style="margin-top: 10px; font-size: 12px; color: #6b7280">
-					* Beküldés után 1-2 munkanapon belül felveszem veled a kapcsolatot.
+					* Beküldés után 24-48 órán belül felveszem veled a kapcsolatot.
 				</p>
 			</div>
 		</section>
@@ -242,29 +235,50 @@
 			</div>
 		</footer>
 		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				const btn = document.getElementById("menu-toggle");
-				const menu = document.getElementById("mainmenu");
-				if (!btn || !menu) return;
+document.addEventListener('DOMContentLoaded', function () {
+  // Csak ott fut, ahol ez a Formspree action van
+  const form = document.querySelector('form[action="https://formspree.io/f/mzzkygya"]');
+  if (!form) return;
 
-				btn.addEventListener("click", function (e) {
-					e.preventDefault();
-					e.stopPropagation();
-					const open = menu.classList.toggle("open");
-					btn.setAttribute("aria-expanded", open ? "true" : "false");
-				});
+  const gdprCheckbox = form.querySelector('input[name="gdpr"]');
+  const submitBtn    = form.querySelector('button[type="submit"]');
+  const gdprError    = form.querySelector('#gdpr-error');
+  const zipInput     = form.querySelector('#zip');
+  const zipError     = form.querySelector('#zip-error');
 
-				document.addEventListener("click", function (e) {
-					if (
-						menu.classList.contains("open") &&
-						!menu.contains(e.target) &&
-						e.target !== btn
-					) {
-						menu.classList.remove("open");
-						btn.setAttribute("aria-expanded", "false");
-					}
-				});
-			});
-		</script>
+  function updateSubmitState() {
+    if (!submitBtn || !gdprCheckbox) return;
+    submitBtn.disabled = !gdprCheckbox.checked;
+  }
+
+  if (gdprCheckbox) {
+    updateSubmitState();
+    gdprCheckbox.addEventListener('change', function () {
+      if (gdprCheckbox.checked && gdprError) {
+        gdprError.style.display = 'none';
+      }
+      updateSubmitState();
+    });
+  }
+
+  form.addEventListener('submit', function (e) {
+    if (gdprCheckbox && !gdprCheckbox.checked) {
+      e.preventDefault();
+      if (gdprError) gdprError.style.display = 'block';
+    }
+  });
+
+  if (zipInput && zipError) {
+    zipInput.addEventListener('input', function () {
+      if (zipInput.validity.valid || zipInput.value === '') {
+        zipError.style.display = 'none';
+      } else {
+        zipError.style.display = 'block';
+      }
+    });
+  }
+});
+</script>
+
 	</body>
 </html>

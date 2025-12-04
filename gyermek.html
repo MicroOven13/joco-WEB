@@ -109,11 +109,10 @@
 					Elérhetőség: <strong>feherj@grantis.hu</strong> •
 					<strong>+36 30 634 0195</strong>
 				</p>
-				<form
-					class="mt-16"
-					action="https://formspree.io/f/mzzkygya"
-					method="POST"
-				>
+				<form class="mt-16"
+      action="https://formspree.io/f/mzzkygya"
+      method="POST">
+
 					<div>
 						<label>Név*</label>
 						<input required name="name" placeholder="" />
@@ -216,7 +215,7 @@
 				</form>
 
 				<p style="margin-top: 10px; font-size: 12px; color: #6b7280">
-					* Beküldés után 1-2 munkanapon belül felveszem veled a kapcsolatot.
+					* Beküldés után 24-48 órán belül felveszem veled a kapcsolatot.
 				</p>
 			</div>
 		</section>
@@ -242,29 +241,50 @@
 			</div>
 		</footer>
 		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				const btn = document.getElementById("menu-toggle");
-				const menu = document.getElementById("mainmenu");
-				if (!btn || !menu) return;
+document.addEventListener('DOMContentLoaded', function () {
+  // Csak ott fut, ahol ez a Formspree action van
+  const form = document.querySelector('form[action="https://formspree.io/f/mzzkygya"]');
+  if (!form) return;
 
-				btn.addEventListener("click", function (e) {
-					e.preventDefault();
-					e.stopPropagation();
-					const open = menu.classList.toggle("open");
-					btn.setAttribute("aria-expanded", open ? "true" : "false");
-				});
+  const gdprCheckbox = form.querySelector('input[name="gdpr"]');
+  const submitBtn    = form.querySelector('button[type="submit"]');
+  const gdprError    = form.querySelector('#gdpr-error');
+  const zipInput     = form.querySelector('#zip');
+  const zipError     = form.querySelector('#zip-error');
 
-				document.addEventListener("click", function (e) {
-					if (
-						menu.classList.contains("open") &&
-						!menu.contains(e.target) &&
-						e.target !== btn
-					) {
-						menu.classList.remove("open");
-						btn.setAttribute("aria-expanded", "false");
-					}
-				});
-			});
-		</script>
+  function updateSubmitState() {
+    if (!submitBtn || !gdprCheckbox) return;
+    submitBtn.disabled = !gdprCheckbox.checked;
+  }
+
+  if (gdprCheckbox) {
+    updateSubmitState();
+    gdprCheckbox.addEventListener('change', function () {
+      if (gdprCheckbox.checked && gdprError) {
+        gdprError.style.display = 'none';
+      }
+      updateSubmitState();
+    });
+  }
+
+  form.addEventListener('submit', function (e) {
+    if (gdprCheckbox && !gdprCheckbox.checked) {
+      e.preventDefault();
+      if (gdprError) gdprError.style.display = 'block';
+    }
+  });
+
+  if (zipInput && zipError) {
+    zipInput.addEventListener('input', function () {
+      if (zipInput.validity.valid || zipInput.value === '') {
+        zipError.style.display = 'none';
+      } else {
+        zipError.style.display = 'block';
+      }
+    });
+  }
+});
+</script>
+
 	</body>
 </html>
