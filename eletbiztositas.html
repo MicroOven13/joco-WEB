@@ -238,7 +238,67 @@ Neked kell dönteni, hogy pár 10e megér e a családod jövőbeli biztonsága..
 		<script>
 document.addEventListener('DOMContentLoaded', function () {
   // Csak ott fut, ahol ez a Formspree action van
-  const form = document.querySelector('form[action="https://formspree.io/f/mzzkygya"]');
+ 
+document.addEventListener('DOMContentLoaded', function () {
+  // MINDEN olyan form, ami Formspree-re megy
+  const forms = document.querySelectorAll('form[action="https://formspree.io/f/mzzkygya"]');
+
+  forms.forEach(function (form) {
+    const gdprCheckbox = form.querySelector('input[name="gdpr"]');
+    const submitBtn    = form.querySelector('button[type="submit"]');
+    const gdprError    = form.querySelector('#gdpr-error');
+    const zipInput     = form.querySelector('#zip');
+    const zipError     = form.querySelector('#zip-error');
+
+    // Beküldés gomb csak akkor aktív, ha a GDPR pipa be van jelölve
+    function updateSubmitState() {
+      if (!submitBtn || !gdprCheckbox) return;
+      submitBtn.disabled = !gdprCheckbox.checked;
+    }
+
+    if (gdprCheckbox) {
+      updateSubmitState();
+
+      gdprCheckbox.addEventListener('change', function () {
+        if (gdprCheckbox.checked && gdprError) {
+          gdprError.style.display = 'none';
+        }
+        updateSubmitState();
+      });
+    }
+
+    // Beküldéskor: először böngésző saját validációja
+    form.addEventListener('submit', function (e) {
+      // email, telefon, irányítószám, required mezők stb.
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        form.reportValidity(); // ez hozza elő a @-os, tel stb. hibát
+        return;
+      }
+
+      // GDPR pipa külön
+      if (gdprCheckbox && !gdprCheckbox.checked) {
+        e.preventDefault();
+        if (gdprError) gdprError.style.display = 'block';
+        return;
+      }
+      // ha minden oké, NEM hívunk preventDefault-ot → megy Formspree-re
+    });
+
+    // Irányítószám alatti piros szöveg élőben
+    if (zipInput && zipError) {
+      zipInput.addEventListener('input', function () {
+        if (zipInput.validity.valid || zipInput.value === '') {
+          zipError.style.display = 'none';
+        } else {
+          zipError.style.display = 'block';
+        }
+      });
+    }
+  });
+});
+</script>
+
   if (!form) return;
 
   const gdprCheckbox = form.querySelector('input[name="gdpr"]');
