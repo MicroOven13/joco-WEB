@@ -242,48 +242,81 @@
 		</footer>
 		<script>
 document.addEventListener('DOMContentLoaded', function () {
+  // © év
+  const yearSpan = document.getElementById('year');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+
+  // Hamburger menü
+  const btn  = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mainmenu');
+
+  if (btn && menu) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (menu.classList.contains('open') &&
+          !menu.contains(e.target) &&
+          e.target !== btn) {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (menu.classList.contains('open')) {
+          menu.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  }
+
+  // Űrlap kezelése (ha van ilyen Formspree form az oldalon)
   const form = document.querySelector('form[action="https://formspree.io/f/mzzkygya"]');
   if (!form) return;
 
   const gdprCheckbox = form.querySelector('input[name="gdpr"]');
-  const submitBtn    = form.querySelector('#submit-btn') || document.getElementById('submit-btn');
-  const gdprError    = form.querySelector('#gdpr-error');
-  const zipInput     = form.querySelector('#zip');
-  const zipError     = form.querySelector('#zip-error');
+  const gdprError    = document.getElementById('gdpr-error');
+  const submitBtn    = form.querySelector('#submit-btn');
+  const zipInput     = document.getElementById('zip');
+  const zipError     = document.getElementById('zip-error');
 
   function updateSubmitState() {
-    if (!submitBtn || !gdprCheckbox) return;
-    submitBtn.disabled = !gdprCheckbox.checked;
+    if (!submitBtn) return;
+    submitBtn.disabled = !(gdprCheckbox && gdprCheckbox.checked);
   }
 
-  // induláskor
-  updateSubmitState();
-
-  // GDPR checkbox
   if (gdprCheckbox) {
+    updateSubmitState();
+
     gdprCheckbox.addEventListener('change', function () {
-      if (gdprError) {
-        gdprError.style.display = gdprCheckbox.checked ? 'none' : 'block';
+      if (gdprCheckbox.checked && gdprError) {
+        gdprError.style.display = 'none';
       }
       updateSubmitState();
     });
   }
 
-  // submitnél: ha a böngésző szerint valami invalid (email, tel, stb.),
-  // akkor a saját beépített hibaüzenetét mutatja
+  // Beküldéskor: ha nincs bepipálva a GDPR, akkor hibaüzenet
   form.addEventListener('submit', function (e) {
-    if (!form.checkValidity()) {
-      return; // a böngésző maga intézi
-    }
-
-    // plusz: GDPR pipa
     if (gdprCheckbox && !gdprCheckbox.checked) {
       e.preventDefault();
-      if (gdprError) gdprError.style.display = 'block';
+      if (gdprError) {
+        gdprError.style.display = 'block';
+      }
     }
+    // Az email/telefon/irányítószám hibákat a böngésző natívan mutatja
   });
 
-  // irányítószám hibaüzenet
+  // Irányítószám hibaüzenet élőben
   if (zipInput && zipError) {
     zipInput.addEventListener('input', function () {
       if (zipInput.validity.valid || zipInput.value === '') {
@@ -295,6 +328,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+</body>
+</html>
+
 
 
 	</body>
