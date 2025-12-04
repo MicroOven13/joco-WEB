@@ -1,55 +1,199 @@
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jogi Nyilatkozat – Fehér József</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">Fehér József</a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Főoldal</a></li>
-          <li><a href="rolam.html">Rólam</a></li>
-          <li><a href="gyik.html">GYIK</a></li>
-          <li><a href="kapcsolat.html">Kapcsolat</a></li>
-          <li><a href="adatkezeles.html" class="active">Adatkezelési tájékoztató</a></li>
-        </ul>
-      </nav>
-      <a href="kapcsolat.html#idopont" class="cta-button">Időpontkérés</a>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogi nyilatkozat – Fehér József</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-  <main class="section container">
-    <h1>Jogi Nyilatkozat</h1>
+  <body class="jogi-oldal">
+    <!-- HEADER -->
+    <header>
+      <div class="container nav">
+        <a class="brand" href="index.html">Fehér József</a>
 
-    <p>
-      A weboldalon található információk kizárólag tájékoztató jellegűek, és nem minősülnek személyre szabott pénzügyi tanácsadásnak.
-      A Fehér József által nyújtott tanácsok minden esetben egyéni konzultáció során kerülnek kialakításra. A weboldal használatából eredő
-      esetleges károkért a szolgáltató nem vállal felelősséget.
-    </p>
+        <!-- Hamburger gomb -->
+        <button
+          id="menu-toggle"
+          type="button"
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="mainmenu"
+          aria-label="Menü"
+        >
+          ☰
+        </button>
 
-    <p>
-      A weboldalon szereplő szövegek, képek és grafikai elemek szerzői jogi védelem alatt állnak, azok másolása és felhasználása kizárólag
-      a tulajdonos előzetes írásbeli engedélyével lehetséges.
-    </p>
+        <!-- Menü -->
+        <nav class="menu" id="mainmenu" role="navigation" aria-label="Főmenü">
+          <a href="index.html">Főoldal</a>
+          <a href="rolam.html">Rólam</a>
+          <a href="gyik.html">GYIK</a>
+          <a href="kapcsolat.html">Kapcsolat</a>
+        </nav>
 
-    <p>
-      A weboldal külső hivatkozásokat (linkeket) is tartalmazhat. A hivatkozott oldalak tartalmáért Fehér József nem vállal felelősséget.
-    </p>
+        <a class="cta" href="kapcsolat.html">Időpontkérés</a>
+      </div>
+    </header>
 
-    <p>
-      A weboldal látogatása során technikai adatokat (pl. IP-cím, sütik) gyűjthetünk a felhasználói élmény javítása érdekében.
-    </p>
-  </main>
+    <!-- TARTALOM -->
+    <section class="hero">
+      <div class="container pad">
+        <h1>Jogi nyilatkozat</h1>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Fehér József – Minden jog fenntartva.</p>
-    </div>
-  </footer>
-</body>
+        <p>
+          Jelen jogi nyilatkozat a feherjozsef.hu weboldal használatával
+          kapcsolatos alapvető feltételeket és információkat tartalmazza.
+          A honlap használatával elfogadod az itt leírtakat.
+        </p>
+
+        <h2>1. Általános információk</h2>
+        <p>
+          A feherjozsef.hu oldalt
+          <strong>Fehér József</strong> üzemelteti azzal a céllal, hogy
+          bemutassa pénzügyi tanácsadói tevékenységét, valamint lehetőséget
+          biztosítson kapcsolatfelvételre.
+        </p>
+
+        <h2>2. A szolgáltatás jellege</h2>
+        <p>
+          A weboldalon található tartalom kizárólag
+          <strong>tájékoztató jellegű</strong>, nem minősül személyre szabott
+          pénzügyi, befektetési, biztosítási vagy jogi tanácsadásnak.
+        </p>
+        <p>
+          Konkrét döntés meghozatala előtt minden esetben szükséges egyéni
+          elemzés és személyes konzultáció, amely során a Te élethelyzeted,
+          kockázatvállalási hajlandóságod és céljaid ismeretében születik meg
+          a javaslat.
+        </p>
+
+        <h2>3. Felelősség kizárása</h2>
+        <p>
+          Bár mindent megteszek azért, hogy a honlapon szereplő információk
+          pontosak és naprakészek legyenek, az esetleges elírásokért,
+          pontatlanságokért, technikai hibákért felelősséget nem vállalok.
+        </p>
+        <p>
+          A weboldalon található információk felhasználásából, értelmezéséből
+          vagy félreértelmezéséből eredő közvetlen vagy közvetett károkért
+          nem vállalok felelősséget. A döntés felelőssége minden esetben
+          az ügyfelet terheli.
+        </p>
+
+        <h2>4. Külső hivatkozások (linkek)</h2>
+        <p>
+          A honlap tartalmazhat olyan külső weboldalakra mutató linkeket,
+          amelyek nem állnak az én ellenőrzésem alatt. Az ilyen külső oldalak
+          tartalmáért, elérhetőségéért, működéséért és adatkezelési
+          gyakorlatáért nem vállalok felelősséget.
+        </p>
+
+        <h2>5. Szerzői jogok</h2>
+        <p>
+          A feherjozsef.hu weboldal teljes tartalma – ideértve különösen a
+          szövegeket, struktúrát, elrendezést – szerzői jogi védelem alatt áll.
+        </p>
+        <p>
+          A tartalmak bármilyen módon történő másolása, terjesztése,
+          módosítása vagy újraközlése kizárólag a szerző előzetes,
+          írásbeli engedélyével lehetséges.
+        </p>
+
+        <h2>6. Technikai rendelkezések</h2>
+        <p>
+          Nem garantálom, hogy a weboldal folyamatosan, megszakítás nélkül
+          vagy hibamentesen elérhető lesz. Az üzemeltetés során előfordulhatnak
+          időszakos leállások, karbantartási szünetek vagy technikai problémák.
+        </p>
+        <p>
+          A felhasználó felelőssége gondoskodni a saját eszközei, böngészője
+          és internetkapcsolata megfelelő működéséről, valamint a vírusvédelemről.
+        </p>
+
+        <h2>7. A jogi nyilatkozat módosítása</h2>
+        <p>
+          Fenntartom a jogot, hogy a jelen jogi nyilatkozat tartalmát
+          bármikor módosítsam a jogszabályi környezet, a szolgáltatások vagy
+          a weboldal működésének változása esetén.
+        </p>
+        <p>
+          A módosított feltételek a honlapon való közzétételtől érvényesek.
+        </p>
+
+        <p style="margin-top: 24px; font-size: 13px; color:#6b7280;">
+          <em>
+            Jelen jogi nyilatkozat tájékoztató jellegű minta, nem minősül jogi
+            tanácsadásnak. Konkrét jogi kérdés esetén javasolt szakember
+            (adatvédelmi vagy polgári jogi ügyvéd) véleményét kérni.
+          </em>
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+          "
+        >
+          <strong>Fehér József</strong>
+          <div style="font-size: 12px">
+            © <span id="year"></span> Fehér József •
+            <a href="adatkezeles.html">Adatkezelési tájékoztató</a> •
+            <a href="joginyilatkozat.html">Jogi nyilatkozat</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPT: év + hamburger -->
+    <script>
+      // év a láblécben
+      document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+      // hamburger menü
+      document.addEventListener("DOMContentLoaded", function () {
+        const btn = document.getElementById("menu-toggle");
+        const menu = document.getElementById("mainmenu");
+        if (!btn || !menu) return;
+
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const open = menu.classList.toggle("open");
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+
+        document.addEventListener("click", function (e) {
+          if (
+            menu.classList.contains("open") &&
+            !menu.contains(e.target) &&
+            e.target !== btn
+          ) {
+            menu.classList.remove("open");
+            btn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        // menüpont választás után zárás (mobilon)
+        menu.querySelectorAll("a").forEach((a) => {
+          a.addEventListener("click", () => {
+            if (menu.classList.contains("open")) {
+              menu.classList.remove("open");
+              btn.setAttribute("aria-expanded", "false");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
