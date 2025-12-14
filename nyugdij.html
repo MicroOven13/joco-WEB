@@ -1,47 +1,334 @@
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nyugdíjmegtakarítás</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body class="nyugdij-oldal">
-  <header class="header">
-    <div class="container-nav">
-      <div class="logo">Fehér József</div>
-      <nav>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Nyugdíjmegtakarítás</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body class="nyugdij-oldal">
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html">Fehér József</a>
+
+      <!-- hamburger gomb mobilra -->
+      <button id="menu-toggle" type="button"
+              class="menu-toggle"
+              aria-expanded="false"
+              aria-controls="mainmenu"
+              aria-label="Menü">☰</button>
+
+      <!-- menü -->
+      <nav class="menu" id="mainmenu">
         <a href="index.html">Főoldal</a>
         <a href="rolam.html">Rólam</a>
         <a href="gyik.html">GYIK</a>
         <a href="kapcsolat.html">Kapcsolat</a>
       </nav>
-      <a class="idopont-btn" href="kapcsolat.html">Időpontkérés</a>
+
+      <a class="cta" href="kapcsolat.html">Időpontkérés</a>
     </div>
   </header>
 
-  <main class="nyugdij-container">
-    <h1>Nyugdíjmegtakarítások</h1>
 
-    <section class="nyugdij-section">
-      <img src="Nyugdíj.jpg" alt="Nyugdíjas férfi gondterhelten számlát néz" />
-      <p><strong>Nyugdíjbiztosítás, NYESZ, ÖNYP, TKM, hozam, lejárat, adózás, költség, szüneteltetés</strong> – ha ezeket nem tudod, mi alapján választod ki a legjobb nyugdíjmegtakarítást kb. 40 pénzintézet közül?</p>
-    </section>
+		<main class="nyugdij-main">
+			<!-- FELSŐ BLOKK – kép + szöveg + zöld pipás sorok -->
+			<section class="nyugdij-hero">
+  <div class="container pad">
 
-    <section class="segitseg">
-      <h2>Miben tudok segíteni neked?</h2>
-      <ul>
-        <li>✅ <strong>Több mint 15 év tapasztalattal</strong> (2009 óta): Több ezer esetet láttam, tudom, mely buktatókat kell elkerülni.</li>
-        <li>✅ <strong>40+ Pénzintézet 90-100 terméke</strong>: Az én célom nem egy termék eladása, hanem a Te gondtalan nyugdíjas éveid biztosítása.</li>
-        <li>✅ <strong>Segítség a döntésben</strong>: Segítek kiválasztani a legjobb nyugdíjmegtakarítást, figyelembe véve a költségeket, hozamokat, tapasztalatokat.</li>
-        <li>✅ <strong>Maximális adójóváírás</strong>: Segítek kihasználni a max. évi 280.000 Ft állami támogatást – ezt nem hagyhatod figyelmen kívül!</li>
-      </ul>
-    </section>
+    <a href="index.html" class="back-home">Vissza a főoldalra</a>
+					<h1 class="nyugdij-title">Nyugdíjmegtakarítások</h1>
 
-    <section class="utolso-uzenet">
-      <p><strong>Neked kell dönteni, hogy csekkekkel akarsz sakkozni otthon vagy a tengerparton élvezni az életed utolsó részét. A kettőt csak havi 30-50e választja el!</strong></p>
-      <img src="Nyugdíjas.jpg" alt="Tengerparton ülő nyugdíjas pár" />
-    </section>
-  </main>
+					<div class="nyugdij-hero-grid">
+						<!-- Bal oldali kép (aggódó nyugdíjas) -->
+						<figure class="nyugdij-hero-image">
+							<img
+								src="Nyugdíjas.jpg"
+								alt="Aggódó nyugdíjas a számlái fölött"
+							/>
+						</figure>
+
+						<!-- Jobb oldali szöveg -->
+						<div class="nyugdij-hero-text">
+							<p class="nyugdij-overtitle">
+								<strong>Nyugdíjbiztosítás, NYESZ, ÖNYP, TKM, hozam, lejárat, adózás,
+								költség, szüneteltetés – ha ezeket nem tudod, mi alapján
+								választod ki a legjobb nyugdíjmegtakarítást kb. 40 pénzintézet
+								közül?
+							</p></strong>
+
+							<h2 class="nyugdij-subtitle">Miben tudok segíteni neked?</h2>
+
+							<ul class="nyugdij-benefits">
+								<li>
+									<strong>Több mint 15 év tapasztalat</strong> (2009 óta): Több
+									ezer esetet láttam, tudom, mely buktatókat kell elkerülni.
+								</li>
+								<li>
+									<strong>40+ Pénzintézet 90–100 terméke</strong>: Az én célom
+									nem egy termék eladása, hanem az Te gondtalan nyugdíjas éveid
+									biztosítása.
+								</li>
+								<li>
+									<strong>Segítség a döntésben</strong>: Segítek kiválasztani a
+									legjobb nyugdíjmegtakarítást, figyelembe véve a megtakarítás
+									költségeit, múltbeli hozamait összevetve a tapasztalataimmal.
+								</li>
+								<li>
+									<strong>Maximális adójóváírás</strong>: Segítek kihasználni a
+									maximális állami támogatást, max. 280&nbsp;000 Ft/év – ezt nem
+									hagyhatja figyelmen kívül!
+								</li>
+							</ul>
+
+							<p class="nyugdij-cta-text">
+								Keress meg, hogy megtaláljuk azt a nyugdíjbiztosítást, ami
+								garantálja neked a gondtalan nyugdíjas éveket!
+                <strong>Neked kell dönteni, hogy csekkekkel akarsz sakkozni otthon vagy a
+							tengerparton élvezni az életed utolsó részét. A kettőt csak havi
+							30–50&nbsp;ezer forint választja el!</strong> 
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ALSÓ BLOKK – tengerpartos kép + szöveg -->
+			<!-- Alsó blokk: két kép egymás mellett + szöveg -->
+<section class="nyugdij-bottom">
+  <div class="nyugdij-bottom-img-row">
+    <figure class="nyugdij-bottom-photo">
+      <img src="Nyugdíj.jpg" alt="Nyugdíjasok a tengerparton">
+    </figure>
+
+    <figure class="nyugdij-bottom-photo">
+      <img src="Penz-penz-penz-5-csillagjegynek-sok-a-sok-sok-penz-a-kovetkezo-2-hetben.webp" alt="Forint bankjegyek">
+    </figure>
+  </div>
+</section>
+
+
+			<section class="hero">
+				<div class="container pad">
+					<h1>Kapcsolat</h1>
+					<p>
+						Elérhetőség: <strong>feherj@grantis.hu</strong> •
+						<strong>+36 30 634 0195</strong>
+					</p>
+					<form class="mt-16"
+      action="https://formspree.io/f/mzzkygya"
+      method="POST">
+
+						<div>
+							<label>Név*</label>
+							<input required name="name" placeholder="" />
+						</div>
+
+						<div>
+							<label>E-mail*</label>
+							<input required type="email" name="email" placeholder="" />
+						</div>
+
+						<div>
+							<label>Telefonszám*</label>
+							<input
+								id="phone"
+								name="phone"
+								type="tel"
+								inputmode="numeric"
+								autocomplete="tel"
+								required
+								maxlength="15"
+								pattern="^[0-9]{9,15}$"
+								title="Kérlek, csak számokat adj meg (9–15 számjegy)."
+								oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+								placeholder=""
+							/>
+						</div>
+						<div>
+							<label>Irányítószám*</label>
+							<input
+								id="zip"
+								name="zip"
+								required
+								inputmode="numeric"
+								maxlength="4"
+								pattern="^\d{4}$"
+								title="Kérlek, 4 számjegyet adj meg (pl. 1051)."
+								placeholder=""
+								oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,4);"
+							/>
+							<small
+								id="zip-error"
+								class="field-error"
+								style="display: none; color: #b91c1c"
+							>
+								Kérlek, 4 számjegyet adj meg (pl. 1051).
+							</small>
+						</div>
+
+						<div>
+							<label>Miért jelentkezik? Mit szeretne?</label>
+							<textarea name="message" rows="5" placeholder=""></textarea>
+						</div>
+
+						<div>
+							<label>Preferált kapcsolatfelvétel</label>
+							<select name="contact_pref">
+								<option>E-mail</option>
+								<option>Telefon</option>
+							</select>
+						</div>
+
+						<label class="consent" id="gdpr-consent">
+							<input
+								type="checkbox"
+								required
+								name="gdpr"
+								aria-describedby="gdpr-error"
+							/>
+							<span>
+								Elolvastam és elfogadom az
+								<a href="adatkezeles.html" target="_blank" rel="noopener"
+									>Adatkezelési tájékoztatót</a
+								>, és hozzájárulok, hogy a megadott személyes adataimat Fehér
+								József a kapcsolatfelvétel és időpont-egyeztetés céljából
+								kezelje.
+							</span>
+						</label>
+						<p
+							id="gdpr-error"
+							style="
+								display: none;
+								color: #b91c1c;
+								font-size: 13px;
+								margin: 6px 0 10px 0;
+							"
+						>
+							Kérlek, jelöld be a hozzájárulást a folytatáshoz.
+						</p>
+
+						<button class="submit" type="submit" id="submit-btn" disabled>
+							Beküldés
+						</button>
+
+						<input
+							type="hidden"
+							name="_subject"
+							value="Új érdeklődés – feherjozsef.hu"
+						/>
+						<input type="hidden" name="_redirect" value="/koszonjuk.html" />
+						<input type="text" name="_gotcha" style="display: none" />
+					</form>
+
+					<p style="margin-top: 10px; font-size: 12px; color: #6b7280">
+						* Beküldés után 24-48 órán belül felveszem veled a kapcsolatot.
+					</p>
+				</div>
+			</section>
+		</main>
+    <footer>
+      <div class="container">
+        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;">
+          <strong>Fehér József</strong>
+          <div style="font-size:12px">
+            © <span id="year"></span> Fehér József •
+            <a href="adatkezeles.html">Adatkezelési tájékoztató</a> •
+            <a href="joginyilatkozat.html">Jogi nyilatkozat</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+     <script>
+document.addEventListener('DOMContentLoaded', function () {
+  // © év
+  const yearSpan = document.getElementById('year');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+
+  // Hamburger menü
+  const btn  = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mainmenu');
+
+  if (btn && menu) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (menu.classList.contains('open') &&
+          !menu.contains(e.target) &&
+          e.target !== btn) {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (menu.classList.contains('open')) {
+          menu.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  }
+
+  // Űrlap kezelése (ha van ilyen Formspree form az oldalon)
+  const form = document.querySelector('form[action="https://formspree.io/f/mzzkygya"]');
+  if (!form) return;
+
+  const gdprCheckbox = form.querySelector('input[name="gdpr"]');
+  const gdprError    = document.getElementById('gdpr-error');
+  const submitBtn    = form.querySelector('#submit-btn');
+  const zipInput     = document.getElementById('zip');
+  const zipError     = document.getElementById('zip-error');
+
+  function updateSubmitState() {
+    if (!submitBtn) return;
+    submitBtn.disabled = !(gdprCheckbox && gdprCheckbox.checked);
+  }
+
+  if (gdprCheckbox) {
+    updateSubmitState();
+
+    gdprCheckbox.addEventListener('change', function () {
+      if (gdprCheckbox.checked && gdprError) {
+        gdprError.style.display = 'none';
+      }
+      updateSubmitState();
+    });
+  }
+
+  // Beküldéskor: ha nincs bepipálva a GDPR, akkor hibaüzenet
+  form.addEventListener('submit', function (e) {
+    if (gdprCheckbox && !gdprCheckbox.checked) {
+      e.preventDefault();
+      if (gdprError) {
+        gdprError.style.display = 'block';
+      }
+    }
+    // Az email/telefon/irányítószám hibákat a böngésző natívan mutatja
+  });
+
+  // Irányítószám hibaüzenet élőben
+  if (zipInput && zipError) {
+    zipInput.addEventListener('input', function () {
+      if (zipInput.validity.valid || zipInput.value === '') {
+        zipError.style.display = 'none';
+      } else {
+        zipError.style.display = 'block';
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>
+
 </body>
 </html>
