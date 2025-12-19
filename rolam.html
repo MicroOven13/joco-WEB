@@ -33,6 +33,26 @@
     <section class="page-hero">
       <div class="container">
         <h1>Rólam</h1>
+        <p>
+          Fehér József – Az Ön Megbízható Pénzügyi Tanácsadója
+Több mint egy évtizednyi Tapasztalat, Több mint 2000 Sikertörténet
+Tisztelt Látogató!
+Üdvözlöm a honlapomon! Fehér József vagyok, pénzügyi tanácsadó, és az én küldetésem az, hogy segítsem Önt a pénzügyi céljai elérésében, legyen szó biztonságos megtakarításról, előnyös hitelfelvételről vagy hosszú távú befektetésről.
+
+        </p>
+        <p>
+          Büszke vagyok rá, hogy a GRANTIS csapatába tartozhatok, mert tudom,
+          hogy itt a minőségi, független kiszolgálás az első, és mint cégünk
+          eredményei is mutatják, ebben a szakmában hosszú távon csak az lehet
+          sikeres, aki megfelelő értékrenddel rendelkezik, és az ügyfél érdekeit
+          tartja az első helyen. Hálás vagyok annak a közel 700 ügyfelemnek,
+          akiknek kezelem a pénzügyeit.
+        </p>
+        <div class="hero-img mt-16 portrait">
+  <img class="profile-img"
+       src="https://grantis.hu/app/uploads/2021/07/feher-jozsef-fejlec-1.jpg"
+       alt="Fehér József portré">
+</div>
       </div>
     </section>
 
@@ -301,6 +321,50 @@
           }
         });
 
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (menu.classList.contains('open') &&
+        !menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+document.addEventListener('DOMContentLoaded', function(){
+  const btn  = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mainmenu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(e){
+    e.preventDefault(); e.stopPropagation();
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', function(e){
+    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    }
+  });
+});
+
+
+    }
+  });
+});
+
+
+    }
+  });
+})();
+
+
+    });
+  });
+    });
+  });
         // Menüpont kiválasztása után zárja be a menüt (mobilon)
         menu.querySelectorAll('a').forEach(a => {
           a.addEventListener('click', () => {
